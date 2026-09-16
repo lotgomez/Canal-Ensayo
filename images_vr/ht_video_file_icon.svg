@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg id="Layer_1" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+ <g id="quadrato_centratore">
+  <rect fill="none" height="64" width="64"/>
+ </g>
+ <g>
+  <polygon fill="#4d4d4d" points="39.5 33.3 46 37.1 46 26.9 39.5 30.7 37.2 32 39.5 33.3"/>
+  <rect fill="#4d4d4d" height="13.1" width="18.5" x="18" y="25.4"/>
+  <path d="M32,5c-14.9,0-27,12.1-27,27s12.1,27,27,27,27-12.1,27-27S46.9,5,32,5ZM48,40.6l-9.5-5.5v5.5h-22.5v-17.1h22.5v5.5l9.5-5.5v17.1Z" fill="#4d4d4d"/>
+ </g>
+ <g id="icona">
+  <path d="M36.5,25.4v13.1h-18.5v-13.1h18.5M46,26.9v10.2l-6.5-3.8-2.3-1.4,2.3-1.4,6.5-3.8M48,23.4l-9.5,5.5v-5.5h-22.5v17.1h22.5v-5.5l9.5,5.5v-17.1Z" fill="#e6e6e6"/>
+ </g>
+</svg>

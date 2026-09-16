@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg id="Layer_1" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+ <g id="quadrato_centratore">
+  <rect fill="none" height="64" width="64"/>
+ </g>
+ <path d="M32,5c-14.9,0-27,12.1-27,27s12.1,27,27,27,27-12.1,27-27S46.9,5,32,5ZM48,43.7H16v-2h32v2ZM48,33H16v-2h32v2ZM48,22.3H16v-2h32v2Z" fill="#4d4d4d"/>
+ <g id="icona">
+  <rect fill="#e6e6e6" height="2" width="32" x="16" y="20.3"/>
+  <rect fill="#e6e6e6" height="2" width="32" x="16" y="31"/>
+  <rect fill="#e6e6e6" height="2" width="32" x="16" y="41.7"/>
+ </g>
+</svg>
