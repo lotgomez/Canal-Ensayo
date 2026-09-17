@@ -1,7 +1,7 @@
 // Garden Gnome Software - VR - Skin
 // Pano2VR 8.0.5/22607
-// Filename: Feather_VR.ggsk
-// Generated 2026-09-17T04:49:43Z
+// Filename: canal vr.ggsk
+// Generated 2026-09-17T04:56:24Z
 
 function pano2vrVrSkin(player,base) {
 	player.addVariable('node_cloner_vr_hasUp', 2, false, { ignoreInState: 0  });
@@ -9,6 +9,7 @@ function pano2vrVrSkin(player,base) {
 	player.addVariable('open_image_hs', 0, "", { ignoreInState: 0  });
 	player.addVariable('open_info_hs', 0, "", { ignoreInState: 0  });
 	player.addVariable('open_video_hs', 0, "", { ignoreInState: 0  });
+	player.addVariable('info_w_picture_1', 1, 0, { ignoreInState: 0  });
 	var me=this;
 	var skin=this;
 	var flag=false;
@@ -2787,6 +2788,1357 @@ function pano2vrVrSkin(player,base) {
 		me._open_skin.add(me._open_skin_icon);
 		me.__open_skin.add(me._open_skin);
 		me.player.setVRShowSkinButton(me.__open_skin);
+		el = new THREE.Group();
+		el.userData.setOpacityInternal = function(v) {
+			me._information.visible = (v>0 && me._information.userData.visible);
+		}
+		el.userData.width = 0;
+		el.userData.height = 0;
+		el.translateX(-1.14);
+		el.translateY(-0.89);
+		el.scale.set(1.20, 1.20, 1.0);
+		el.userData.width = 350;
+		el.userData.height = 400;
+		el.userData.scale = {x: 1.20, y: 1.20, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'information';
+		el.userData.x = -1.14;
+		el.userData.y = -0.89;
+		el.translateZ(0.240);
+		el.userData.zIndex = 10;
+		el.userData.zIndexCurrent = 10;
+		el.userData.z = 0.040;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'sticky';
+		el.userData.hanchor = 1;
+		el.userData.vanchor = 1;
+		el.renderOrder = 4;
+		el.userData.renderOrder = 4;
+		el.userData.setOpacityInternal = function(v) {
+			if (me._information.material) me._information.material.opacity = v;
+			me._information.visible = (v>0 && me._information.userData.visible);
+		}
+		el.userData.isVisible = function() {
+			let vis = me._information.visible
+			let parentEl = me._information.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._information.userData.opacity = v;
+			v = v * me._information.userData.parentOpacity;
+			if (me._information.userData.setOpacityInternal) me._information.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._information.children.length; i++) {
+				let child = me._information.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._information.userData.parentOpacity = v;
+			v = v * me._information.userData.opacity
+			if (me._information.userData.setOpacityInternal) me._information.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._information.children.length; i++) {
+				let child = me._information.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = false;
+		el.userData.permeable = true;
+		el.userData.visible = false;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._information = el;
+		el.userData.ggId="information";
+		me._information.userData.ggIsActive=function() {
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return player.getCurrentNode();
+		}
+		me._information.logicBlock_scaling = function() {
+			var newLogicStateScaling;
+			if (
+				((player.getViewerSize(true).width <= 1024)) && 
+				((player.getViewerSize(true).width > 480))
+			)
+			{
+				newLogicStateScaling = 0;
+			}
+			else if (
+				((player.getViewerSize(true).width <= 480))
+			)
+			{
+				newLogicStateScaling = 1;
+			}
+			else {
+				newLogicStateScaling = -1;
+			}
+			if (me._information.ggCurrentLogicStateScaling != newLogicStateScaling) {
+				me._information.ggCurrentLogicStateScaling = newLogicStateScaling;
+				if (me._information.ggCurrentLogicStateScaling == 0) {
+					me._information.scale.set(1, 1, 1.0);
+					var scaleOffX = 0;
+					var scaleOffY = 0;
+					me._information.position.x = (me._information.position.x - me._information.userData.curScaleOffX) + scaleOffX;
+					me._information.userData.curScaleOffX = scaleOffX;
+					me._information.position.y = (me._information.position.y - me._information.userData.curScaleOffY) + scaleOffY;
+					me._information.userData.curScaleOffY = scaleOffY;
+				}
+				else if (me._information.ggCurrentLogicStateScaling == 1) {
+					me._information.scale.set(0.6, 0.6, 1.0);
+					var scaleOffX = 0;
+					var scaleOffY = 0;
+					me._information.position.x = (me._information.position.x - me._information.userData.curScaleOffX) + scaleOffX;
+					me._information.userData.curScaleOffX = scaleOffX;
+					me._information.position.y = (me._information.position.y - me._information.userData.curScaleOffY) + scaleOffY;
+					me._information.userData.curScaleOffY = scaleOffY;
+				}
+				else {
+					me._information.scale.set(1.2, 1.2, 1.0);
+					var scaleOffX = 0;
+					var scaleOffY = 0;
+					me._information.position.x = (me._information.position.x - me._information.userData.curScaleOffX) + scaleOffX;
+					me._information.userData.curScaleOffX = scaleOffX;
+					me._information.position.y = (me._information.position.y - me._information.userData.curScaleOffY) + scaleOffY;
+					me._information.userData.curScaleOffY = scaleOffY;
+				}
+			}
+		}
+		me._information.logicBlock_visible = function() {
+			var newLogicStateVisible;
+			if (
+				((player.getVariableValue('info_w_picture_1') > Number("0")))
+			)
+			{
+				newLogicStateVisible = 0;
+			}
+			else {
+				newLogicStateVisible = -1;
+			}
+			if (me._information.ggCurrentLogicStateVisible != newLogicStateVisible) {
+				me._information.ggCurrentLogicStateVisible = newLogicStateVisible;
+				if (me._information.ggCurrentLogicStateVisible == 0) {
+			me._information.visible=((!me._information.material && Number(me._information.userData.opacity>0)) || (me._information.material && Number(me._information.material.opacity)>0))?true:false;
+			player.repaint();
+			me._information.userData.visible=true;
+				}
+				else {
+			me._information.visible=false;
+			player.repaint();
+			me._information.userData.visible=false;
+				}
+			}
+		}
+		me._information.userData.ggUpdatePosition=function (useTransition) {
+			me._information.logicBlock_scaling();
+		}
+		el = new THREE.Mesh();
+			material = new THREE.MeshBasicMaterial( { color: player.getTHREESkinColor('#ffffff'), side : THREE.DoubleSide, transparent : (player.get3dModelType() != 2 || false) } ); 
+			el.userData.transparentIn3d = material.transparent;
+			material.name = 'information_bg_material';
+			el.material = material;
+		el.translateX(0);
+		el.translateY(0);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 350;
+		el.userData.height = 400;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'information_bg';
+		el.userData.x = 0;
+		el.userData.y = 0;
+		el.translateZ(0.050);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.050;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'sticky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 5;
+		el.userData.renderOrder = 5;
+		el.userData.isVisible = function() {
+			let vis = me._information_bg.visible
+			let parentEl = me._information_bg.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._information_bg.userData.opacity = v;
+			v = v * me._information_bg.userData.parentOpacity;
+			if (me._information_bg.userData.setOpacityInternal) me._information_bg.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._information_bg.children.length; i++) {
+				let child = me._information_bg.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._information_bg.userData.parentOpacity = v;
+			v = v * me._information_bg.userData.opacity
+			if (me._information_bg.userData.setOpacityInternal) me._information_bg.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._information_bg.children.length; i++) {
+				let child = me._information_bg.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = true;
+		el.userData.permeable = false;
+		el.userData.visible = true;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._information_bg = el;
+		el.userData.borderWidth = {};
+		el.userData.borderWidth.default = {};
+		el.userData.borderWidth.default.top = 0;
+		el.userData.borderWidth.default.right = 0;
+		el.userData.borderWidth.default.bottom = 0;
+		el.userData.borderWidth.default.left = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadius.default = {};
+		el.userData.borderRadius.default.topLeft = 0;
+		el.userData.borderRadius.default.topRight = 0;
+		el.userData.borderRadius.default.bottomRight = 0;
+		el.userData.borderRadius.default.bottomLeft = 0;
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.createGeometry = function(bwTop, bwRight, bwBottom, bwLeft, brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._information_bg;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			if (typeof(bwTop) != 'undefined') {
+				el.userData.borderWidth.top = bwTop;
+				el.userData.borderWidth.right = bwRight;
+				el.userData.borderWidth.bottom = bwBottom;
+				el.userData.borderWidth.left = bwLeft;
+				el.userData.borderRadius.topLeft = brTopLeft;
+				el.userData.borderRadius.topRight = brTopRight;
+				el.userData.borderRadius.bottomRight = brBottomRight;
+				el.userData.borderRadius.bottomLeft = brBottomLeft;
+			}
+			let width = el.userData.width / 100.0;
+			let height = el.userData.height / 100.0;
+			skin.rectCalcBorderRadiiInnerShape(me._information_bg);
+			if (skin.rectHasRoundedCorners(me._information_bg)) {
+		roundedRectShape = new THREE.Shape();
+		let borderRadiusTL = me._information_bg.userData.borderRadiusInnerShape.topLeft / 100.0;
+		let borderRadiusTR = me._information_bg.userData.borderRadiusInnerShape.topRight / 100.0;
+		let borderRadiusBR = me._information_bg.userData.borderRadiusInnerShape.bottomRight / 100.0;
+		let borderRadiusBL = me._information_bg.userData.borderRadiusInnerShape.bottomLeft / 100.0;
+		roundedRectShape.moveTo((-width / 2.0) + borderRadiusTL, (height / 2.0));
+		roundedRectShape.lineTo((width / 2.0) - borderRadiusTR, (height / 2.0));
+		if (borderRadiusTR > 0.0) {
+		roundedRectShape.arc(0, -borderRadiusTR, borderRadiusTR, Math.PI / 2.0, 2.0 * Math.PI, true);
+		}
+		roundedRectShape.lineTo((width / 2.0), (-height / 2.0) + borderRadiusBR);
+		if (borderRadiusBR > 0.0) {
+		roundedRectShape.arc(-borderRadiusBR, 0, borderRadiusBR, 2.0 * Math.PI, 3.0 * Math.PI / 2.0, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0) + borderRadiusBL, (-height / 2.0));
+		if (borderRadiusBL > 0.0) {
+		roundedRectShape.arc(0, borderRadiusBL, borderRadiusBL, 3.0 * Math.PI / 2.0, Math.PI, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0), (height / 2.0) - borderRadiusTL);
+		if (borderRadiusTL > 0.0) {
+		roundedRectShape.arc(borderRadiusTL, 0, borderRadiusTL, Math.PI, Math.PI / 2.0, true);
+		}
+		geometry = new THREE.ShapeGeometry(roundedRectShape);
+		geometry.name = 'information_bg_geometry';
+		geometry.computeBoundingBox();
+		var min = geometry.boundingBox.min;
+		var max = geometry.boundingBox.max;
+		var offset = new THREE.Vector2(0 - min.x, 0 - min.y);
+		var range = new THREE.Vector2(max.x - min.x, max.y - min.y);
+		var vertexPositions = geometry.getAttribute('position');
+		var vertexUVs = geometry.getAttribute('uv');
+		for (var i = 0; i < vertexPositions.count; i++) {
+			var v1 = vertexPositions.getX(i);
+			var	v2 = vertexPositions.getY(i);
+			vertexUVs.setX(i, (v1 + offset.x) / range.x);
+			vertexUVs.setY(i, (v2 + offset.y) / range.y);
+		}
+		geometry.uvsNeedUpdate = true;
+			} else {
+				geometry = new THREE.PlaneGeometry(el.userData.width / 100.0, el.userData.height / 100.0, 5, 5);
+				geometry.name = 'information_bg_geometry';
+			}
+			el.geometry = geometry;
+		}
+		me._information_bg.userData.backgroundColorAlpha = 1;
+		me._information_bg.userData.borderColorAlpha = 1;
+		me._information_bg.userData.setOpacityInternal = function(v) {
+			me._information_bg.material.opacity = v * me._information_bg.userData.backgroundColorAlpha;
+			if (me._information_bg.userData.ggSubElement) {
+				me._information_bg.userData.ggSubElement.material.opacity = v
+				me._information_bg.userData.ggSubElement.visible = (v>0 && me._information_bg.userData.visible);
+			}
+			me._information_bg.visible = (v>0 && me._information_bg.userData.visible);
+		}
+		me._information_bg.userData.setBackgroundColor = function(v) {
+			me._information_bg.material.color = v;
+		}
+		me._information_bg.userData.setBackgroundColorAlpha = function(v) {
+			me._information_bg.userData.backgroundColorAlpha = v;
+			me._information_bg.userData.setOpacity(me._information_bg.userData.opacity);
+		}
+		el.userData.createGeometry(0, 0, 0, 0, 0, 0, 0, 0);
+		el.userData.ggId="information_bg";
+		me._information_bg.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return player.getCurrentNode();
+		}
+		me._information_bg.userData.ggUpdatePosition=function (useTransition) {
+		}
+		me._information.add(me._information_bg);
+		el = new THREE.Mesh();
+			material = new THREE.MeshBasicMaterial( {side : THREE.DoubleSide, transparent : (player.get3dModelType() != 2 || false) } ); 
+			el.userData.transparentIn3d = material.transparent;
+			material.name = 'info_text_body_material';
+			el.material = material;
+		el.translateX(0);
+		el.translateY(-1.365);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 340;
+		el.userData.height = 111;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'info_text_body';
+		el.userData.x = 0;
+		el.userData.y = -1.365;
+		el.translateZ(0.060);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.060;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'sticky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 6;
+		el.userData.renderOrder = 6;
+		el.userData.isVisible = function() {
+			let vis = me._info_text_body.visible
+			let parentEl = me._info_text_body.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._info_text_body.userData.opacity = v;
+			v = v * me._info_text_body.userData.parentOpacity;
+			if (me._info_text_body.userData.setOpacityInternal) me._info_text_body.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._info_text_body.children.length; i++) {
+				let child = me._info_text_body.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._info_text_body.userData.parentOpacity = v;
+			v = v * me._info_text_body.userData.opacity
+			if (me._info_text_body.userData.setOpacityInternal) me._info_text_body.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._info_text_body.children.length; i++) {
+				let child = me._info_text_body.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = true;
+		el.userData.permeable = false;
+		el.userData.visible = true;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._info_text_body = el;
+		el.userData.borderWidth = {};
+		el.userData.borderWidth.default = {};
+		el.userData.borderWidth.default.top = 0;
+		el.userData.borderWidth.default.right = 0;
+		el.userData.borderWidth.default.bottom = 0;
+		el.userData.borderWidth.default.left = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadius.default = {};
+		el.userData.borderRadius.default.topLeft = 0;
+		el.userData.borderRadius.default.topRight = 0;
+		el.userData.borderRadius.default.bottomRight = 0;
+		el.userData.borderRadius.default.bottomLeft = 0;
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.createGeometry = function(bwTop, bwRight, bwBottom, bwLeft, brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._info_text_body;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			if (typeof(bwTop) != 'undefined') {
+				el.userData.borderWidth.top = bwTop;
+				el.userData.borderWidth.right = bwRight;
+				el.userData.borderWidth.bottom = bwBottom;
+				el.userData.borderWidth.left = bwLeft;
+				el.userData.borderRadius.topLeft = brTopLeft;
+				el.userData.borderRadius.topRight = brTopRight;
+				el.userData.borderRadius.bottomRight = brBottomRight;
+				el.userData.borderRadius.bottomLeft = brBottomLeft;
+			}
+			let width = el.userData.width / 100.0;
+			let height = el.userData.height / 100.0;
+			skin.rectCalcBorderRadiiInnerShape(me._info_text_body);
+			if (skin.rectHasRoundedCorners(me._info_text_body)) {
+		roundedRectShape = new THREE.Shape();
+		let borderRadiusTL = me._info_text_body.userData.borderRadiusInnerShape.topLeft / 100.0;
+		let borderRadiusTR = me._info_text_body.userData.borderRadiusInnerShape.topRight / 100.0;
+		let borderRadiusBR = me._info_text_body.userData.borderRadiusInnerShape.bottomRight / 100.0;
+		let borderRadiusBL = me._info_text_body.userData.borderRadiusInnerShape.bottomLeft / 100.0;
+		roundedRectShape.moveTo((-width / 2.0) + borderRadiusTL, (height / 2.0));
+		roundedRectShape.lineTo((width / 2.0) - borderRadiusTR, (height / 2.0));
+		if (borderRadiusTR > 0.0) {
+		roundedRectShape.arc(0, -borderRadiusTR, borderRadiusTR, Math.PI / 2.0, 2.0 * Math.PI, true);
+		}
+		roundedRectShape.lineTo((width / 2.0), (-height / 2.0) + borderRadiusBR);
+		if (borderRadiusBR > 0.0) {
+		roundedRectShape.arc(-borderRadiusBR, 0, borderRadiusBR, 2.0 * Math.PI, 3.0 * Math.PI / 2.0, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0) + borderRadiusBL, (-height / 2.0));
+		if (borderRadiusBL > 0.0) {
+		roundedRectShape.arc(0, borderRadiusBL, borderRadiusBL, 3.0 * Math.PI / 2.0, Math.PI, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0), (height / 2.0) - borderRadiusTL);
+		if (borderRadiusTL > 0.0) {
+		roundedRectShape.arc(borderRadiusTL, 0, borderRadiusTL, Math.PI, Math.PI / 2.0, true);
+		}
+		geometry = new THREE.ShapeGeometry(roundedRectShape);
+		geometry.name = 'info_text_body_geometry';
+		geometry.computeBoundingBox();
+		var min = geometry.boundingBox.min;
+		var max = geometry.boundingBox.max;
+		var offset = new THREE.Vector2(0 - min.x, 0 - min.y);
+		var range = new THREE.Vector2(max.x - min.x, max.y - min.y);
+		var vertexPositions = geometry.getAttribute('position');
+		var vertexUVs = geometry.getAttribute('uv');
+		for (var i = 0; i < vertexPositions.count; i++) {
+			var v1 = vertexPositions.getX(i);
+			var	v2 = vertexPositions.getY(i);
+			vertexUVs.setX(i, (v1 + offset.x) / range.x);
+			vertexUVs.setY(i, (v2 + offset.y) / range.y);
+		}
+		geometry.uvsNeedUpdate = true;
+			} else {
+				geometry = new THREE.PlaneGeometry(el.userData.width / 100.0, el.userData.height / 100.0, 5, 5);
+				geometry.name = 'info_text_body_geometry';
+			}
+			el.geometry = geometry;
+		}
+		me._info_text_body.userData.backgroundColorAlpha = 1;
+		me._info_text_body.userData.borderColorAlpha = 1;
+		me._info_text_body.userData.setOpacityInternal = function(v) {
+			me._info_text_body.material.opacity = v;
+			if (me._info_text_body.userData.hasScrollbar) {
+				me._info_text_body.userData.scrollbar.material.opacity = v;
+				me._info_text_body.userData.scrollbarBg.material.opacity = v;
+			}
+			if (me._info_text_body.userData.ggSubElement) {
+				me._info_text_body.userData.ggSubElement.material.opacity = v
+				me._info_text_body.userData.ggSubElement.visible = (v>0 && me._info_text_body.userData.visible);
+			}
+			me._info_text_body.visible = (v>0 && me._info_text_body.userData.visible);
+		}
+		me._info_text_body.userData.setBackgroundColor = function(v) {
+			me._info_text_body.material.color = v;
+		}
+		me._info_text_body.userData.setBackgroundColorAlpha = function(v) {
+			me._info_text_body.userData.backgroundColorAlpha = v;
+			me._info_text_body.userData.setOpacity(me._info_text_body.userData.opacity);
+		}
+		el.userData.createGeometry(0, 0, 0, 0, 0, 0, 0, 0);
+		el.userData.backgroundColor = player.getTHREESkinColor('#ffffff');
+		el.userData.textColor = '#000000';
+		el.userData.textColorAlpha = 1;
+		var canvas = document.createElement('canvas');
+		canvas.width = 680;
+		canvas.height = 222;
+		el.userData.textCanvas = canvas;
+		el.userData.textCanvasContext = canvas.getContext('2d');
+		var tmpCanvas = document.createElement('canvas');
+		el.userData.tmpCanvas = tmpCanvas;
+		el.userData.tmpCanvasContext = tmpCanvas.getContext('2d');
+		el.userData.ggTextureFromCanvas = function() {
+			var el = me._info_text_body;
+			var canv = me._info_text_body.userData.textCanvas;
+			var ctx = me._info_text_body.userData.textCanvasContext;
+			var tmpCanv = me._info_text_body.userData.tmpCanvas;
+			ctx.clearRect(0, 0, canv.width, canv.height);
+			ctx.fillStyle = 'rgba(' + me._info_text_body.userData.backgroundColor.r * 255 + ', ' + me._info_text_body.userData.backgroundColor.g * 255 + ', ' + me._info_text_body.userData.backgroundColor.b * 255 + ', ' + me._info_text_body.userData.backgroundColorAlpha + ')';
+			ctx.fillRect(0, 0, canv.width, canv.height);
+			if (tmpCanv.width > 0 && tmpCanv.height > 0) {
+				ctx.drawImage(tmpCanv, 0, ( me._info_text_body.userData.scrollPosPercent ? tmpCanv.height * me._info_text_body.userData.scrollPosPercent : 0), canv.width, canv.height, 0, 0, canv.width, canv.height);
+			}
+			var textTexture = new THREE.CanvasTexture(canv);
+			textTexture.name = 'info_text_body_texture';
+			textTexture.minFilter = THREE.LinearFilter;
+			textTexture.colorSpace = THREE.LinearSRGBColorSpace;
+			textTexture.wrapS = THREE.ClampToEdgeWrapping;
+			textTexture.wrapT = THREE.ClampToEdgeWrapping;
+			if (me._info_text_body.material.map) {
+				me._info_text_body.material.map.dispose();
+			}
+			me._info_text_body.material.map = textTexture;
+			me._info_text_body.material.needsUpdate = true;
+			player.repaint();
+		}
+		el.userData.ggRenderText = function() {
+			skin.removeChildren(me._info_text_body, 'scrollbar');
+			skin.paintTextDivToCanvas(me._info_text_body, 'box-sizing: border-box; width: 340px; height: auto; color: rgba(0,0,0,1); text-align: left; white-space: pre-line; padding: 0px; overflow: hidden; overflow-y: auto;' + '; color: ' + me._info_text_body.userData.textColor + ' !important;', false, false, true, true);
+			if (me._info_text_body.userData.totalHeightCanv > (me._info_text_body.userData.height)) {
+				skin.paintTextDivToCanvas(me._info_text_body, 'box-sizing: border-box; width: 320px; height: auto; color: rgba(0,0,0,1); text-align: left; white-space: pre-line; padding: 0px; overflow: hidden; overflow-y: auto;' + '; color: ' + me._info_text_body.userData.textColor + ' !important;', false, false, true);
+			} else {
+			skin.paintTextDivToCanvas(me._info_text_body, 'box-sizing: border-box; width: 340px; height: auto; color: rgba(0,0,0,1); text-align: left; white-space: pre-line; padding: 0px; overflow: hidden; overflow-y: auto;' + '; color: ' + me._info_text_body.userData.textColor + ' !important;', false, false, true);
+			}
+			me._info_text_body.userData.scrollPosPercent = 0.0
+			if (me._info_text_body.userData.totalHeightCanv > ((me._info_text_body.userData.height))) {
+				me._info_text_body.userData.pagePercent = ((me._info_text_body.userData.height) - me._info_text_body.userData.lineHeight) / me._info_text_body.userData.totalHeightCanv;
+				me._info_text_body.userData.maxScrollPercent = (me._info_text_body.userData.totalHeightCanv - (1 * (me._info_text_body.userData.height))) / me._info_text_body.userData.totalHeightCanv;
+				geometry = new THREE.PlaneGeometry(20 / 100.0, me._info_text_body.userData.height / 100.0, 5, 5 );
+				geometry.name = 'info_text_body_scrollbarBgGeometry';
+				material = new THREE.MeshBasicMaterial( {color: 0x7f7f7f, side: THREE.DoubleSide, transparent: true } );
+				material.name = 'info_text_body_scrollbarBgMaterial';
+				me._info_text_body.userData.scrollbarBg = new THREE.Mesh( geometry, material );
+				me._info_text_body.userData.scrollbarBg.name = 'info_text_body_scrollbarBg';
+				me._info_text_body.add(me._info_text_body.userData.scrollbarBg);
+				me._info_text_body.userData.scrollbarXPos = (me._info_text_body.userData.width - 20) / 200.0;
+				me._info_text_body.userData.scrollbarBg.position.x = me._info_text_body.userData.scrollbarXPos;
+				me._info_text_body.userData.scrollbarBg.position.z = me._info_text_body.position.z + 0.01;
+				me._info_text_body.userData.scrollbarBg.userData.stopPropagation = true;
+				me._info_text_body.userData.scrollbarHeight = ((1 * me._info_text_body.userData.height) / me._info_text_body.userData.totalHeightCanv) * me._info_text_body.userData.height;
+				geometry = new THREE.PlaneGeometry(20 / 100.0, me._info_text_body.userData.scrollbarHeight / 100.0, 5, 5 );
+				geometry.name = 'info_text_body_scrollbarGeometry';
+				material = new THREE.MeshBasicMaterial( {color: 0xbfbfbf, side: THREE.DoubleSide, transparent: true } );
+				material.name = 'info_text_body_scrollbarMaterial';
+				me._info_text_body.userData.scrollbar = new THREE.Mesh( geometry, material );
+				me._info_text_body.userData.scrollbar.name = 'info_text_body_scrollbar';
+				me._info_text_body.add(me._info_text_body.userData.scrollbar);
+				me._info_text_body.userData.scrollbar.position.x = me._info_text_body.userData.scrollbarXPos;
+				me._info_text_body.userData.scrollbar.position.z = me._info_text_body.position.z + 0.02;
+				me._info_text_body.userData.scrollbarYPosMin = (me._info_text_body.userData.height - me._info_text_body.userData.scrollbarHeight) / 200.0;
+				me._info_text_body.userData.scrollbarYPosMax = me._info_text_body.userData.scrollbarYPosMin - (me._info_text_body.userData.height - me._info_text_body.userData.scrollbarHeight) / 100.0;
+				me._info_text_body.userData.scrollbar.position.y = me._info_text_body.userData.scrollbarYPosMin;
+				geometry = new THREE.PlaneGeometry(20 / 100.0, me._info_text_body.userData.height / 200.0, 5, 5 );
+				geometry.name = 'info_text_body_scrollbarPageDownGeometry';
+				material = new THREE.MeshBasicMaterial( {color: 0x000000, side: THREE.DoubleSide, transparent: true } );
+				material.name = 'info_text_body_scrollbarPageDownMaterial';
+				me._info_text_body.userData.scrollbarPageDown = new THREE.Mesh( geometry, material );
+				me._info_text_body.userData.scrollbarPageDown.name = 'info_text_body_scrollbarPageDown';
+				me._info_text_body.userData.scrollbarPageDown.userData.onclick = function() {
+					me._info_text_body.userData.scrollPosPercent -= me._info_text_body.userData.pagePercent;
+					me._info_text_body.userData.scrollPosPercent = Math.max(me._info_text_body.userData.scrollPosPercent, 0);
+					me._info_text_body.userData.ggTextureFromCanvas();
+					me._info_text_body.userData.scrollbar.position.y += (me._info_text_body.userData.height * me._info_text_body.userData.pagePercent) / 100.0;
+					me._info_text_body.userData.scrollbar.position.y = Math.min(me._info_text_body.userData.scrollbar.position.y, me._info_text_body.userData.scrollbarYPosMin);
+				}
+				me._info_text_body.userData.scrollbarPageDown.position.x = me._info_text_body.userData.scrollbarXPos;
+				me._info_text_body.userData.scrollbarPageDown.position.y = me._info_text_body.userData.height / 400.0;
+				me._info_text_body.userData.scrollbarPageDown.position.z = me._info_text_body.position.z + 0.05;
+				me._info_text_body.userData.scrollbarPageDown.userData.stopPropagation = true;
+				me._info_text_body.userData.scrollbarPageDown.userData.clickInvisible = true;
+				me._info_text_body.userData.scrollbarPageDown.visible = false;
+				me._info_text_body.add(me._info_text_body.userData.scrollbarPageDown);
+				geometry = new THREE.PlaneGeometry(20 / 100.0, me._info_text_body.userData.height / 200.0, 5, 5 );
+				geometry.name = 'info_text_body_scrollbarPageUpGeometry';
+				material = new THREE.MeshBasicMaterial( {color: 0x000000, side: THREE.DoubleSide, transparent: true } );
+				material.name = 'info_text_body_scrollbarPageUpMaterial';
+				me._info_text_body.userData.scrollbarPageUp = new THREE.Mesh( geometry, material );
+				me._info_text_body.userData.scrollbarPageUp.name = 'info_text_body_scrollbarPageUp';
+				me._info_text_body.userData.scrollbarPageUp.userData.onclick = function() {
+					me._info_text_body.userData.scrollPosPercent += me._info_text_body.userData.pagePercent;
+					me._info_text_body.userData.scrollPosPercent = Math.min(me._info_text_body.userData.scrollPosPercent, me._info_text_body.userData.maxScrollPercent);
+					me._info_text_body.userData.ggTextureFromCanvas();
+					me._info_text_body.userData.scrollbar.position.y -= (me._info_text_body.userData.height * me._info_text_body.userData.pagePercent) / 100.0;
+					me._info_text_body.userData.scrollbar.position.y = Math.max(me._info_text_body.userData.scrollbar.position.y, me._info_text_body.userData.scrollbarYPosMax);
+				}
+				me._info_text_body.userData.scrollbarPageUp.position.x = me._info_text_body.userData.scrollbarXPos;
+				me._info_text_body.userData.scrollbarPageUp.position.y = -me._info_text_body.userData.height / 400.0;
+				me._info_text_body.userData.scrollbarPageUp.position.z = me._info_text_body.position.z + 0.05;
+				me._info_text_body.userData.scrollbarPageUp.userData.stopPropagation = true;
+				me._info_text_body.userData.scrollbarPageUp.userData.clickInvisible = true;
+				me._info_text_body.userData.scrollbarPageUp.visible = false;
+				me._info_text_body.add(me._info_text_body.userData.scrollbarPageUp);
+				me._info_text_body.userData.hasScrollbar = true;
+			} else {
+				me._info_text_body.userData.hasScrollbar = false;
+			}
+		}
+		el.userData.ggUpdateText=function(force) {
+			var params = [];
+			var hs = player._("", params);
+			if (hs!=this.ggText || force) {
+				this.ggText=hs;
+				this.ggRenderText();
+			}
+		}
+		el.userData.setBackgroundColor = function(v) {
+			me._info_text_body.userData.backgroundColor = v;
+		}
+		el.userData.setBackgroundColorAlpha = function(v) {
+			me._info_text_body.userData.backgroundColorAlpha = v;
+		}
+		el.userData.setTextColor = function(v) {
+			me._info_text_body.userData.textColor = '#' + v.getHexString();
+		}
+		el.userData.setTextColorAlpha = function(v) {
+			me._info_text_body.userData.textColorAlpha = v;
+		}
+		el.userData.ggId="info_text_body";
+		me._info_text_body.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return player.getCurrentNode();
+		}
+		me._info_text_body.userData.ggUpdatePosition=function (useTransition) {
+				me._info_text_body.userData.ggUpdateText(true);
+		}
+		me._information.add(me._info_text_body);
+		el = new THREE.Mesh();
+			material = new THREE.MeshBasicMaterial( { color: player.getTHREESkinColor('#ffffff'), side : THREE.DoubleSide, transparent : (player.get3dModelType() != 2 || false) } ); 
+			el.userData.transparentIn3d = material.transparent;
+			material.name = 'popup_imagen_material';
+			el.material = material;
+		el.translateX(-0.005);
+		el.translateY(0.445);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 333;
+		el.userData.height = 223;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'popup_imagen';
+		el.userData.x = -0.005;
+		el.userData.y = 0.445;
+		el.translateZ(0.070);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.070;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'sticky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 7;
+		el.userData.renderOrder = 7;
+		el.userData.isVisible = function() {
+			let vis = me._popup_imagen.visible
+			let parentEl = me._popup_imagen.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._popup_imagen.userData.opacity = v;
+			v = v * me._popup_imagen.userData.parentOpacity;
+			if (me._popup_imagen.userData.setOpacityInternal) me._popup_imagen.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._popup_imagen.children.length; i++) {
+				let child = me._popup_imagen.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._popup_imagen.userData.parentOpacity = v;
+			v = v * me._popup_imagen.userData.opacity
+			if (me._popup_imagen.userData.setOpacityInternal) me._popup_imagen.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._popup_imagen.children.length; i++) {
+				let child = me._popup_imagen.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = false;
+		el.userData.permeable = false;
+		el.userData.visible = false;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._popup_imagen = el;
+		el.userData.borderWidth = {};
+		el.userData.borderWidth.default = {};
+		el.userData.borderWidth.default.top = 0;
+		el.userData.borderWidth.default.right = 0;
+		el.userData.borderWidth.default.bottom = 0;
+		el.userData.borderWidth.default.left = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadius.default = {};
+		el.userData.borderRadius.default.topLeft = 0;
+		el.userData.borderRadius.default.topRight = 0;
+		el.userData.borderRadius.default.bottomRight = 0;
+		el.userData.borderRadius.default.bottomLeft = 0;
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.createGeometry = function(bwTop, bwRight, bwBottom, bwLeft, brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._popup_imagen;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			if (typeof(bwTop) != 'undefined') {
+				el.userData.borderWidth.top = bwTop;
+				el.userData.borderWidth.right = bwRight;
+				el.userData.borderWidth.bottom = bwBottom;
+				el.userData.borderWidth.left = bwLeft;
+				el.userData.borderRadius.topLeft = brTopLeft;
+				el.userData.borderRadius.topRight = brTopRight;
+				el.userData.borderRadius.bottomRight = brBottomRight;
+				el.userData.borderRadius.bottomLeft = brBottomLeft;
+			}
+			let width = el.userData.width / 100.0;
+			let height = el.userData.height / 100.0;
+			skin.rectCalcBorderRadiiInnerShape(me._popup_imagen);
+			if (skin.rectHasRoundedCorners(me._popup_imagen)) {
+		roundedRectShape = new THREE.Shape();
+		let borderRadiusTL = me._popup_imagen.userData.borderRadiusInnerShape.topLeft / 100.0;
+		let borderRadiusTR = me._popup_imagen.userData.borderRadiusInnerShape.topRight / 100.0;
+		let borderRadiusBR = me._popup_imagen.userData.borderRadiusInnerShape.bottomRight / 100.0;
+		let borderRadiusBL = me._popup_imagen.userData.borderRadiusInnerShape.bottomLeft / 100.0;
+		roundedRectShape.moveTo((-width / 2.0) + borderRadiusTL, (height / 2.0));
+		roundedRectShape.lineTo((width / 2.0) - borderRadiusTR, (height / 2.0));
+		if (borderRadiusTR > 0.0) {
+		roundedRectShape.arc(0, -borderRadiusTR, borderRadiusTR, Math.PI / 2.0, 2.0 * Math.PI, true);
+		}
+		roundedRectShape.lineTo((width / 2.0), (-height / 2.0) + borderRadiusBR);
+		if (borderRadiusBR > 0.0) {
+		roundedRectShape.arc(-borderRadiusBR, 0, borderRadiusBR, 2.0 * Math.PI, 3.0 * Math.PI / 2.0, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0) + borderRadiusBL, (-height / 2.0));
+		if (borderRadiusBL > 0.0) {
+		roundedRectShape.arc(0, borderRadiusBL, borderRadiusBL, 3.0 * Math.PI / 2.0, Math.PI, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0), (height / 2.0) - borderRadiusTL);
+		if (borderRadiusTL > 0.0) {
+		roundedRectShape.arc(borderRadiusTL, 0, borderRadiusTL, Math.PI, Math.PI / 2.0, true);
+		}
+		geometry = new THREE.ShapeGeometry(roundedRectShape);
+		geometry.name = 'popup_imagen_geometry';
+		geometry.computeBoundingBox();
+		var min = geometry.boundingBox.min;
+		var max = geometry.boundingBox.max;
+		var offset = new THREE.Vector2(0 - min.x, 0 - min.y);
+		var range = new THREE.Vector2(max.x - min.x, max.y - min.y);
+		var vertexPositions = geometry.getAttribute('position');
+		var vertexUVs = geometry.getAttribute('uv');
+		for (var i = 0; i < vertexPositions.count; i++) {
+			var v1 = vertexPositions.getX(i);
+			var	v2 = vertexPositions.getY(i);
+			vertexUVs.setX(i, (v1 + offset.x) / range.x);
+			vertexUVs.setY(i, (v2 + offset.y) / range.y);
+		}
+		geometry.uvsNeedUpdate = true;
+			} else {
+				geometry = new THREE.PlaneGeometry(el.userData.width / 100.0, el.userData.height / 100.0, 5, 5);
+				geometry.name = 'popup_imagen_geometry';
+			}
+			el.geometry = geometry;
+		}
+		me._popup_imagen.userData.backgroundColorAlpha = 1;
+		me._popup_imagen.userData.borderColorAlpha = 1;
+		me._popup_imagen.userData.setOpacityInternal = function(v) {
+			me._popup_imagen.material.opacity = v * me._popup_imagen.userData.backgroundColorAlpha;
+			if (me._popup_imagen.userData.ggSubElement) {
+				me._popup_imagen.userData.ggSubElement.material.opacity = v
+				me._popup_imagen.userData.ggSubElement.visible = (v>0 && me._popup_imagen.userData.visible);
+			}
+			me._popup_imagen.visible = (v>0 && me._popup_imagen.userData.visible);
+		}
+		me._popup_imagen.userData.setBackgroundColor = function(v) {
+			me._popup_imagen.material.color = v;
+		}
+		me._popup_imagen.userData.setBackgroundColorAlpha = function(v) {
+			me._popup_imagen.userData.backgroundColorAlpha = v;
+			me._popup_imagen.userData.setOpacity(me._popup_imagen.userData.opacity);
+		}
+		el.userData.createGeometry(0, 0, 0, 0, 0, 0, 0, 0);
+		currentWidth = 333;
+		currentHeight = 223;
+		var img = {};
+		img.geometry = new THREE.PlaneGeometry(currentWidth / 100.0, currentHeight / 100.0, 5, 5);
+		img.geometry.name = 'popup_imagen_imgGeometry';
+		loader = new THREE.TextureLoader();
+		el.userData.ggSetUrl = function(extUrl) {
+			loader.load(extUrl,
+				function (texture) {
+				texture.colorSpace = player.getVRTextureColorSpace();
+				let tmpDepthTest = true;
+				if (me._popup_imagen.userData.ggSubElement.material) {
+					tmpDepthTest = me._popup_imagen.userData.ggSubElement.material.depthTest;
+				}
+				var loadedMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide, transparent: true, depthTest: tmpDepthTest, depthWrite: tmpDepthTest });
+				loadedMaterial.name = 'popup_imagen_subElementMaterial';
+				me._popup_imagen.userData.ggSubElement.material = loadedMaterial;
+				me._popup_imagen.userData.ggUpdatePosition();
+				me._popup_imagen.userData.ggText = extUrl;
+				me._popup_imagen.userData.setOpacity(me._popup_imagen.userData.opacity);
+			});
+		};
+		var extUrl=basePath + "";
+		el.userData.ggSetUrl(extUrl);
+		material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide, transparent: true } );
+		material.name = 'popup_imagen_subElementMaterial';
+		el.userData.ggSubElement = new THREE.Mesh( img.geometry, material );
+		el.userData.ggSubElement.name = 'popup_imagen_subElement';
+		el.userData.ggSubElement.position.z = el.position.z + 0.005;
+		el.add(el.userData.ggSubElement);
+		el.userData.clientWidth = 333;
+		el.userData.clientHeight = 223;
+		el.userData.ggId="popup_imagen";
+		me._popup_imagen.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return player.getCurrentNode();
+		}
+		me._popup_imagen.logicBlock_visible = function() {
+			var newLogicStateVisible;
+			if (
+				((player.getVariableValue('info_w_picture_1') > Number("0")))
+			)
+			{
+				newLogicStateVisible = 0;
+			}
+			else {
+				newLogicStateVisible = -1;
+			}
+			if (me._popup_imagen.ggCurrentLogicStateVisible != newLogicStateVisible) {
+				me._popup_imagen.ggCurrentLogicStateVisible = newLogicStateVisible;
+				if (me._popup_imagen.ggCurrentLogicStateVisible == 0) {
+			me._popup_imagen.visible=((!me._popup_imagen.material && Number(me._popup_imagen.userData.opacity>0)) || (me._popup_imagen.material && Number(me._popup_imagen.material.opacity)>0))?true:false;
+			player.repaint();
+			me._popup_imagen.userData.visible=true;
+				}
+				else {
+			me._popup_imagen.visible=false;
+			player.repaint();
+			me._popup_imagen.userData.visible=false;
+				}
+			}
+		}
+		me._popup_imagen.userData.ggUpdatePosition=function (useTransition) {
+			var parentWidth = me._popup_imagen.userData.clientWidth;
+			var parentHeight = me._popup_imagen.userData.clientHeight;
+			var img = me._popup_imagen.userData.ggSubElement;
+			if (!img.material || !img.material.map) return;
+			var imgWidth = img.material.map.image.naturalWidth;
+			var imgHeight = img.material.map.image.naturalHeight;
+			var aspectRatioDiv = parentWidth / parentHeight;
+			var aspectRatioImg = imgWidth / imgHeight;
+			if (imgWidth < parentWidth) parentWidth = imgWidth;
+			if (imgHeight < parentHeight) parentHeight = imgHeight;
+			var currentWidth, currentHeight;
+			img.geometry.dispose();
+			if (aspectRatioDiv > aspectRatioImg) {
+				currentHeight = parentHeight;
+				currentWidth = parentHeight * aspectRatioImg;
+			img.geometry = new THREE.PlaneGeometry(currentWidth / 100.0, currentHeight / 100.0, 5, 5);
+			img.geometry.name = 'popup_imagen_imgGeometry';
+			} else {
+				currentWidth = parentWidth;
+				currentHeight = parentWidth / aspectRatioImg;
+			img.geometry = new THREE.PlaneGeometry(currentWidth / 100.0, currentHeight / 100.0, 5, 5);
+			img.geometry.name = 'popup_imagen_imgGeometry';
+			};
+		}
+		me._information.add(me._popup_imagen);
+		el = new THREE.Mesh();
+			material = new THREE.MeshBasicMaterial( {side : THREE.DoubleSide, transparent : (player.get3dModelType() != 2 || false) } ); 
+			el.userData.transparentIn3d = material.transparent;
+			material.name = 'info_title_material';
+			el.material = material;
+		el.translateX(-0.405);
+		el.translateY(1.76);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 245;
+		el.userData.height = 20;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'info_title';
+		el.userData.x = -0.405;
+		el.userData.y = 1.76;
+		el.translateZ(0.080);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.080;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'sticky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 8;
+		el.userData.renderOrder = 8;
+		el.userData.isVisible = function() {
+			let vis = me._info_title.visible
+			let parentEl = me._info_title.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._info_title.userData.opacity = v;
+			v = v * me._info_title.userData.parentOpacity;
+			if (me._info_title.userData.setOpacityInternal) me._info_title.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._info_title.children.length; i++) {
+				let child = me._info_title.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._info_title.userData.parentOpacity = v;
+			v = v * me._info_title.userData.opacity
+			if (me._info_title.userData.setOpacityInternal) me._info_title.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._info_title.children.length; i++) {
+				let child = me._info_title.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = true;
+		el.userData.permeable = false;
+		el.userData.visible = true;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._info_title = el;
+		el.userData.borderWidth = {};
+		el.userData.borderWidth.default = {};
+		el.userData.borderWidth.default.top = 0;
+		el.userData.borderWidth.default.right = 0;
+		el.userData.borderWidth.default.bottom = 0;
+		el.userData.borderWidth.default.left = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadius.default = {};
+		el.userData.borderRadius.default.topLeft = 0;
+		el.userData.borderRadius.default.topRight = 0;
+		el.userData.borderRadius.default.bottomRight = 0;
+		el.userData.borderRadius.default.bottomLeft = 0;
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.createGeometry = function(bwTop, bwRight, bwBottom, bwLeft, brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._info_title;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			if (typeof(bwTop) != 'undefined') {
+				el.userData.borderWidth.top = bwTop;
+				el.userData.borderWidth.right = bwRight;
+				el.userData.borderWidth.bottom = bwBottom;
+				el.userData.borderWidth.left = bwLeft;
+				el.userData.borderRadius.topLeft = brTopLeft;
+				el.userData.borderRadius.topRight = brTopRight;
+				el.userData.borderRadius.bottomRight = brBottomRight;
+				el.userData.borderRadius.bottomLeft = brBottomLeft;
+			}
+			let width = el.userData.width / 100.0;
+			let height = el.userData.height / 100.0;
+			skin.rectCalcBorderRadiiInnerShape(me._info_title);
+			if (skin.rectHasRoundedCorners(me._info_title)) {
+		roundedRectShape = new THREE.Shape();
+		let borderRadiusTL = me._info_title.userData.borderRadiusInnerShape.topLeft / 100.0;
+		let borderRadiusTR = me._info_title.userData.borderRadiusInnerShape.topRight / 100.0;
+		let borderRadiusBR = me._info_title.userData.borderRadiusInnerShape.bottomRight / 100.0;
+		let borderRadiusBL = me._info_title.userData.borderRadiusInnerShape.bottomLeft / 100.0;
+		roundedRectShape.moveTo((-width / 2.0) + borderRadiusTL, (height / 2.0));
+		roundedRectShape.lineTo((width / 2.0) - borderRadiusTR, (height / 2.0));
+		if (borderRadiusTR > 0.0) {
+		roundedRectShape.arc(0, -borderRadiusTR, borderRadiusTR, Math.PI / 2.0, 2.0 * Math.PI, true);
+		}
+		roundedRectShape.lineTo((width / 2.0), (-height / 2.0) + borderRadiusBR);
+		if (borderRadiusBR > 0.0) {
+		roundedRectShape.arc(-borderRadiusBR, 0, borderRadiusBR, 2.0 * Math.PI, 3.0 * Math.PI / 2.0, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0) + borderRadiusBL, (-height / 2.0));
+		if (borderRadiusBL > 0.0) {
+		roundedRectShape.arc(0, borderRadiusBL, borderRadiusBL, 3.0 * Math.PI / 2.0, Math.PI, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0), (height / 2.0) - borderRadiusTL);
+		if (borderRadiusTL > 0.0) {
+		roundedRectShape.arc(borderRadiusTL, 0, borderRadiusTL, Math.PI, Math.PI / 2.0, true);
+		}
+		geometry = new THREE.ShapeGeometry(roundedRectShape);
+		geometry.name = 'info_title_geometry';
+		geometry.computeBoundingBox();
+		var min = geometry.boundingBox.min;
+		var max = geometry.boundingBox.max;
+		var offset = new THREE.Vector2(0 - min.x, 0 - min.y);
+		var range = new THREE.Vector2(max.x - min.x, max.y - min.y);
+		var vertexPositions = geometry.getAttribute('position');
+		var vertexUVs = geometry.getAttribute('uv');
+		for (var i = 0; i < vertexPositions.count; i++) {
+			var v1 = vertexPositions.getX(i);
+			var	v2 = vertexPositions.getY(i);
+			vertexUVs.setX(i, (v1 + offset.x) / range.x);
+			vertexUVs.setY(i, (v2 + offset.y) / range.y);
+		}
+		geometry.uvsNeedUpdate = true;
+			} else {
+				geometry = new THREE.PlaneGeometry(el.userData.width / 100.0, el.userData.height / 100.0, 5, 5);
+				geometry.name = 'info_title_geometry';
+			}
+			el.geometry = geometry;
+		}
+		me._info_title.userData.backgroundColorAlpha = 1;
+		me._info_title.userData.borderColorAlpha = 1;
+		me._info_title.userData.setOpacityInternal = function(v) {
+			me._info_title.material.opacity = v;
+			if (me._info_title.userData.hasScrollbar) {
+				me._info_title.userData.scrollbar.material.opacity = v;
+				me._info_title.userData.scrollbarBg.material.opacity = v;
+			}
+			if (me._info_title.userData.ggSubElement) {
+				me._info_title.userData.ggSubElement.material.opacity = v
+				me._info_title.userData.ggSubElement.visible = (v>0 && me._info_title.userData.visible);
+			}
+			me._info_title.visible = (v>0 && me._info_title.userData.visible);
+		}
+		me._info_title.userData.setBackgroundColor = function(v) {
+			me._info_title.material.color = v;
+		}
+		me._info_title.userData.setBackgroundColorAlpha = function(v) {
+			me._info_title.userData.backgroundColorAlpha = v;
+			me._info_title.userData.setOpacity(me._info_title.userData.opacity);
+		}
+		el.userData.createGeometry(0, 0, 0, 0, 0, 0, 0, 0);
+		el.userData.backgroundColor = player.getTHREESkinColor('#ffffff');
+		el.userData.textColor = '#000000';
+		el.userData.textColorAlpha = 1;
+		var canvas = document.createElement('canvas');
+		canvas.width = 490;
+		canvas.height = 40;
+		el.userData.textCanvas = canvas;
+		el.userData.textCanvasContext = canvas.getContext('2d');
+		var tmpCanvas = document.createElement('canvas');
+		el.userData.tmpCanvas = tmpCanvas;
+		el.userData.tmpCanvasContext = tmpCanvas.getContext('2d');
+		el.userData.ggTextureFromCanvas = function() {
+			var el = me._info_title;
+			var canv = me._info_title.userData.textCanvas;
+			var ctx = me._info_title.userData.textCanvasContext;
+			var tmpCanv = me._info_title.userData.tmpCanvas;
+			ctx.clearRect(0, 0, canv.width, canv.height);
+			ctx.fillStyle = 'rgba(' + me._info_title.userData.backgroundColor.r * 255 + ', ' + me._info_title.userData.backgroundColor.g * 255 + ', ' + me._info_title.userData.backgroundColor.b * 255 + ', ' + me._info_title.userData.backgroundColorAlpha + ')';
+			ctx.fillRect(0, 0, canv.width, canv.height);
+			if (tmpCanv.width > 0 && tmpCanv.height > 0) {
+				ctx.drawImage(tmpCanv, 0, ( me._info_title.userData.scrollPosPercent ? tmpCanv.height * me._info_title.userData.scrollPosPercent : 0), canv.width, canv.height, 0, 0, canv.width, canv.height);
+			}
+			var textTexture = new THREE.CanvasTexture(canv);
+			textTexture.name = 'info_title_texture';
+			textTexture.minFilter = THREE.LinearFilter;
+			textTexture.colorSpace = THREE.LinearSRGBColorSpace;
+			textTexture.wrapS = THREE.ClampToEdgeWrapping;
+			textTexture.wrapT = THREE.ClampToEdgeWrapping;
+			if (me._info_title.material.map) {
+				me._info_title.material.map.dispose();
+			}
+			me._info_title.material.map = textTexture;
+			me._info_title.material.needsUpdate = true;
+			player.repaint();
+		}
+		el.userData.ggRenderText = function() {
+			skin.removeChildren(me._info_title, 'scrollbar');
+			skin.paintTextDivToCanvas(me._info_title, 'box-sizing: border-box; width: 245px; height: auto; color: rgba(0,0,0,1); text-align: left; white-space: pre; padding: 0px; overflow: hidden;' + '; color: ' + me._info_title.userData.textColor + ' !important;', false, false, false);
+			me._info_title.userData.hasScrollbar = false;
+		}
+		el.userData.ggUpdateText=function(force) {
+			var params = [];
+			var hs = player._("%S(hs)", params);
+			if (hs!=this.ggText || force) {
+				this.ggText=hs;
+				this.ggRenderText();
+			}
+		}
+		el.userData.setBackgroundColor = function(v) {
+			me._info_title.userData.backgroundColor = v;
+		}
+		el.userData.setBackgroundColorAlpha = function(v) {
+			me._info_title.userData.backgroundColorAlpha = v;
+		}
+		el.userData.setTextColor = function(v) {
+			me._info_title.userData.textColor = '#' + v.getHexString();
+		}
+		el.userData.setTextColorAlpha = function(v) {
+			me._info_title.userData.textColorAlpha = v;
+		}
+		el.userData.ggId="info_title";
+		me._info_title.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return player.getCurrentNode();
+		}
+		me._info_title.logicBlock_text = function() {
+			var newLogicStateText;
+			if (
+				((player.getVariableValue('info_w_picture_1') == Number("1")))
+			)
+			{
+				newLogicStateText = 0;
+			}
+			else {
+				newLogicStateText = -1;
+			}
+			if (me._info_title.ggCurrentLogicStateText != newLogicStateText) {
+				me._info_title.ggCurrentLogicStateText = newLogicStateText;
+				if (me._info_title.ggCurrentLogicStateText == 0) {
+					if (me._info_title.userData.ggUpdateText) {
+					me._info_title.userData.ggUpdateText=function(force) {
+						var params = [];
+						params.push(player._(String(player.hotspot.title)));
+						var hs = player._("%1", params);
+						if (hs!=this.ggText || force) {
+							this.ggText=hs;
+							this.ggRenderText();
+						}
+					}
+					me._info_title.userData.ggUpdateText();
+					} else {
+						if (me._info_title.ggUpdatePosition) me._info_title.ggUpdatePosition();
+					}
+				}
+				else {
+					if (me._info_title.userData.ggUpdateText) {
+					me._info_title.userData.ggUpdateText=function(force) {
+						var params = [];
+						var hs = player._("%S(hs)", params);
+						if (hs!=this.ggText || force) {
+							this.ggText=hs;
+							this.ggRenderText();
+						}
+					}
+					me._info_title.userData.ggUpdateText();
+					} else {
+						if (me._info_title.ggUpdatePosition) me._info_title.ggUpdatePosition();
+					}
+				}
+			}
+		}
+		me._info_title.userData.ggUpdatePosition=function (useTransition) {
+				me._info_title.userData.ggUpdateText(true);
+		}
+		me._information.add(me._info_title);
+		el = new THREE.Mesh();
+		el.translateX(1.54);
+		el.translateY(1.8);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 32;
+		el.userData.height = 32;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'info_popup_close';
+		el.userData.x = 1.54;
+		el.userData.y = 1.8;
+		el.translateZ(0.090);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.090;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'clicky';
+		el.userData.hanchor = 2;
+		el.userData.vanchor = 0;
+		el.renderOrder = 9;
+		el.userData.renderOrder = 9;
+		el.userData.isVisible = function() {
+			let vis = me._info_popup_close.visible
+			let parentEl = me._info_popup_close.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._info_popup_close.userData.opacity = v;
+			v = v * me._info_popup_close.userData.parentOpacity;
+			if (me._info_popup_close.userData.setOpacityInternal) me._info_popup_close.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._info_popup_close.children.length; i++) {
+				let child = me._info_popup_close.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._info_popup_close.userData.parentOpacity = v;
+			v = v * me._info_popup_close.userData.opacity
+			if (me._info_popup_close.userData.setOpacityInternal) me._info_popup_close.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._info_popup_close.children.length; i++) {
+				let child = me._info_popup_close.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = true;
+		el.userData.permeable = false;
+		el.userData.visible = true;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._info_popup_close = el;
+		el.userData.setOpacityInternal = function(v) {
+			if (me._info_popup_close.userData.materialNormal) me._info_popup_close.userData.materialNormal.opacity = v;
+			if (me._info_popup_close.userData.materialOver) me._info_popup_close.userData.materialOver.opacity = v;
+			if (me._info_popup_close.userData.materialActive) me._info_popup_close.userData.materialActive.opacity = v;
+			me._info_popup_close.visible = (v>0 && me._info_popup_close.userData.visible);
+		}
+		loader = new THREE.TextureLoader();
+		texture = loader.load('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADz0lEQVR4nO2bMU8jRxTHf85dsUiXYPYDHC6CkC/ZlsIkcnn3MeCDJOerESjXWEoKCqgp6e201xp0iiIR4srNoeUiQML2pNi15PP58Lw3M2sn+C+9Cu3O/P7eZd97MwNLLbXUY1apwLFi4DvgW2Ad+AZ4lv/tH+AauAT+BM6ADwXOLYieAq+AJhnQEDCWMcyvaeb3eFLw3J30HDgAetgDz4pefs/nBXKIVQGOgHv8gU/GfT5GpRAiS60Ab4BbwoFPxg3QyMeeq74ne1eLAp+Ms3wOc9Eu2S8xL/jxp2E3MOtneu1h4r7j56DEY3pbEJAm3gbkBjKX5w05K34KBb+7AHC24f1/QkKxnznXuMHj12GF+X7qtHGGpzzhjWYC5XL5utVqtbe3t99rIWq12v'+
+	't2u91eXV39qLxHwxW+guLRL5fL12madowxZjgcpvV6/Vx6j3q9fj4cDlNjjLm6uuooTbghqzzVOnKBH0lqwjj8SA4mHGnh1xEWNtPgpSZMg3c04R5lFXkgGWhtbS1N0/Rs2sRtTXgI3tGEAyn8UwT1vA38LBNs4B1M6CFsqrySOHx8fNyymfiXTJDAj3R6etqSzBF4KTGgKbl5tVq97Pf7PY0JGvh+v9+rVquXQgOaEgPEiU+SJBcaEzTwSZJcSOcHdGzhY2QNTCcTCoI3OVNsY8CPygGCmuAIP4ofbAxwrvp8m+AJ3gA7NgY0PAzkzQSP8AbL2kCUAIU0wTO8AfZtDPjN44AmSZKLwWAgNmEwGPiGN8Cvk7Bf2TjiojiOb0ulUiS9rlQqRXEc34aY0yx5ewU0Sc64tKX0A2H1CjQWAT6QCQ0bA5w/g77gA5iwY2OA'+
+	'UyLkG96zCVaJkDoVDgXvyQTrVBgUxZC2qtNWkQoDrIshEJbDW1tbf2irOm0VWavVpN1mUTksaogcHh6KGiKTGZ7GhJOTk5bQAFFDRNQSi6LortvtvtPAa0zodrvvoii6E8CLW2IgTIhsTJiV29uYoIA3KJqioGiLP2SCbWHzkAlKeHVbHBQLI9NMkFZ100xQwhscFkYgWxoTb4MZN0Fb0o6b4ADvvDQGysXRKIru9vf32xsbG13N9YDZ3Nz8e29v73clvMHD4igsl8eBbLPBo90gMdJ/aYvMjm/4kR71JqmRFnmb3C8BuT/RIj4JwX/5SS3SVtmdsKhf1rw3S3fITqHMVStkCUfR2+VfA+J2e0hVKO7AxHoxSDo92iMzk3pC1oVpkr2r0kNTnfzalwQ8NFX0sbkXZMfmKsDXfHps7iPwF9mxuXP+B8fmllpqqcXXv4'+
+	'iTKT6NVt3iAAAAAElFTkSuQmCC');
+		texture.colorSpace = player.getVRTextureColorSpace();
+		material = new THREE.MeshBasicMaterial( {map: texture, side: THREE.DoubleSide, transparent: true} );
+		material.name = 'info_popup_close_material';
+		el.userData.materialNormal = material;
+		el.userData.materialCurrent = material;
+		textureOver = loader.load('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFAUlEQVR4nO2bwU4bVxSGf0e68iAHldjGwhkMMihNNiVZJIv6EXiD9ilYFnZ0AYJF8xQtgl26zAqSqlIXbTDBNgSwQJUtLARI8VCbGTrTxcwoYzT2zNxzPbbl/tJZWIjj+/2emXvnnHuBIVckpO+RAHwD4IkVjwGMAnho/V0BUAdQBXBkxR6A25DG1xW9APAjgHcAmgCMgNEEsANg2co1EIoDWARQRHBgryhYueOh0QSQDOA1zEtZNPj9UKzvkkMh81AUwBLCAXczYskaQ0+Ug/mwChv8fhwB+LbLrC16ANN5TSAENTSYz4euz2ojAH7tIahXvLHG2BWNAfitDyC94r01VqF6BGC3D+D8xq5IE0YwGL+825VAvh0iMO+rXsPwxhsQH4yLfQBBjR944X'+
+	'Por6mONzRwrBOiIC5yUqnUTTQavaMCRCIRY3Jy8jMxzxECrhiXKF84Pz9/ouu6oijKYSqVuuTNwxgz8vn8B8Mw9PX19XdEExb9wssgrO0t+H8MS7wmMMaM/f39D4ZDa2trFBMUmHUIT70WBe80IZlMXlHgBZnwkxd8HJy/fjv4oCZ0gre1urrKa0IdHvUErmnPC96vCYwx3Qve1srKCq8JHZ8FgSs5fuEdJhy4mRAEnmhCoR38i6DJYrGYput6Pcig3UxgjOmFQuGvoHkMwzByudwehwnP3QxYDpqIMaY3Go0yz8Dr9fpBIpG4psDf3d2djo2NnXMYsOxmwA5HIkOW5Vqz2eQ2oVQq8cKfZLPZTzxjBrB9H14CX+naacIJDwiPNE37lMlkDnnHC6CBeyvDV4RkoZqgqmpJlmUKvB0vAbO+B5jdGpIqlUpqZmZm9Pb2'+
+	'tkzN1U6apu1PTU1FKpXK1wLSPQEEGgAA1Wp1vFsmaJqWl2WZnZ+fPxWUssUAX2tkP7JNaDabwkxQVfXPdDotXVxciIIHrMaKbcCowMSoVqvjs7OzQkxQVfWPiYmJ2OXlpUh4wGrMPnB+ECkRJqiq+vv4+PhX19fXz0SOzVKLAV3R1dVVolarKbz/r2lanDGWEjmmdvoF9GmlJSRJ+rdcLu9Spz1FUUqJRIK7qNIhfga+XAF1kW5KkqQXi8WP2WzWdc0dRLFY7NnZ2dmF9e4gUgrwxYCqqKwi4W3FYrGnp6enok2oOD98jz667DvcDgfJZFLU7fCd0wDyUrjb8A4TDgWZ8NJpAOllKCx4pwmUajNcXoYAztdhCvzNzc0e76s00YTt+/AAR0EkEokYx8fHeU74fDwer1HqCYqiHEaj0QaHAa4FkcAlsenp6c8UeDsPwQ'+
+	'Q1k8mUOQxoO0MVgibb2trapsATTNAWFhbecsC3LYoCnGVxvya0g+cwgRfegEdZnLsx4mWCF3wAEyjwno0RgNAa29zcdDXBL7wPEyjwBny0xgBic3RjY2ObAt/BBCq87+YoQGyP2ybwwruYoBLhDQRojwMCNkjMzc0VGWM3xEEbkiQp6XT6b2KewBskgCHfImNrqDdJAf9vkwNgbjZ83wcwQUPIRklbYxjirbJOEwbhSujKZmlbI+jvZ0JXt8vbisCcHfppitRgPu3DOgYIwJxbh/LIjFNRmFdDrw5NLaKHh6acegzzTauO7oPXre8S1tEWKfvgZODKko8owLzPH4VGQ9RzmMXHHfCV3Bswq7fL6FDDoyqsp2YUrYenZZjtaefhaQVmu8o+PP0RA354eiD0H8RT3laRsepMAAAAAElFTkSuQmCC');
+		textureOver.colorSpace = player.getVRTextureColorSpace();
+		el.userData.materialOver = new THREE.MeshBasicMaterial( {map: textureOver, side: THREE.DoubleSide, transparent: true} );
+		el.userData.materialOver.name = 'info_popup_close_materialOver';
+		el.userData.createGeometry = function(brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._info_popup_close;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			let minDim = Math.min(el.userData.width, el.userData.height) / 2;
+			el.userData.borderRadiusInnerShape.topLeft = Math.min(brTopLeft, minDim);
+			el.userData.borderRadiusInnerShape.topRight = Math.min(brTopRight, minDim);
+			el.userData.borderRadiusInnerShape.bottomRight = Math.min(brBottomRight, minDim);
+			el.userData.borderRadiusInnerShape.bottomLeft = Math.min(brBottomLeft, minDim);
+		geometry = new THREE.PlaneGeometry(me._info_popup_close.userData.width / 100.0, me._info_popup_close.userData.height / 100.0, 5, 5 );
+		geometry.name = 'info_popup_close_geometry';
+		el.geometry = geometry;
+		el.material = el.userData.materialCurrent;
+		}
+		el.userData.createGeometry(0, 0, 0, 0);
+		el.userData.ggId="info_popup_close";
+		me._info_popup_close.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return player.getCurrentNode();
+		}
+		me._info_popup_close.userData.onclick=function (e) {
+			player.setVariableValue('info_w_picture_1', Number("0"));
+		}
+		me._info_popup_close.userData.hasOwnClickAction = true;
+		me._info_popup_close.userData.onmouseenter=function (e) {
+			player.setOverrideCursor('pointer');
+			me._info_popup_close.material = me._info_popup_close.userData.materialCurrent = me._info_popup_close.userData.materialOver;
+			me.elementMouseOver['info_popup_close']=true;
+		}
+		me._info_popup_close.userData.onmouseleave=function (e) {
+			player.setOverrideCursor('default');
+			me._info_popup_close.material = me._info_popup_close.userData.materialCurrent = me._info_popup_close.userData.materialNormal;
+			me.elementMouseOver['info_popup_close']=false;
+		}
+		me._info_popup_close.userData.ggUpdatePosition=function (useTransition) {
+		}
+		me._information.add(me._info_popup_close);
+		me.skinGroup.add(me._information);
 		me._thumbnails.userData.setOpacity(1.00);
 		if (player.get3dModelType() == 2) {
 			me._thumbnails.traverse((obj)=>{
@@ -2911,6 +4263,85 @@ function pano2vrVrSkin(player,base) {
 					}
 			});
 		}
+		me._information.traverse((obj)=>{
+			let level = skin.getDepthFrom(me._information, obj);
+			let treePos = obj.parent ? obj.parent.children.indexOf(obj) : 0;
+			if (10 > 0) {
+				if (obj == me._information) {
+					obj.renderOrder = 10000 + 1000*10
+				} else {
+					let parentOrder = obj.parent.renderOrder;
+					let isSkinElement = obj.userData.hasOwnProperty('ggId');
+					obj.renderOrder = parentOrder + (isSkinElement ? (treePos * 100) : 0) + level;
+				}
+			} else {
+				obj.renderOrder = me._information.userData.renderOrder + level;
+			}
+			if (obj.material) {
+				if (player.get3dModelType() != 2) {
+					obj.material.depthTest = false;
+					obj.material.depthWrite = false;
+				} else {
+					obj.material.transparent = true;
+				}
+			}
+		});
+		player.repaint();
+		me._information.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._information.traverse((obj)=>{
+				if (me._information.material) {
+					me._information.material.transparent = (me._information.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+		me._information.logicBlock_scaling();
+		me._information.logicBlock_visible();
+		me._information_bg.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._information_bg.traverse((obj)=>{
+				if (me._information_bg.material) {
+					me._information_bg.material.transparent = (me._information_bg.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+		me._info_text_body.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._info_text_body.traverse((obj)=>{
+				if (me._info_text_body.material) {
+					me._info_text_body.material.transparent = (me._info_text_body.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+			me._info_text_body.userData.ggUpdateText(true);
+		me._popup_imagen.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._popup_imagen.traverse((obj)=>{
+				if (me._popup_imagen.material) {
+					me._popup_imagen.material.transparent = (me._popup_imagen.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+		me._popup_imagen.logicBlock_visible();
+		me._info_title.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._info_title.traverse((obj)=>{
+				if (me._info_title.material) {
+					me._info_title.material.transparent = (me._info_title.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+			me._info_title.userData.ggUpdateText(true);
+		me._info_title.logicBlock_text();
+		me._info_popup_close.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._info_popup_close.traverse((obj)=>{
+				if (me._info_popup_close.material) {
+					me._info_popup_close.material.transparent = (me._info_popup_close.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+		me.elementMouseOver['info_popup_close']=false;
 		me.eventactivehotspotchangedCallback = function() {
 			for(var i = 0; i < me._node_cloner_vr.userData.ggInstances.length; i++) {
 				me._node_cloner_vr.userData.ggInstances[i].ggEvent_activehotspotchanged();
@@ -2984,6 +4415,11 @@ function pano2vrVrSkin(player,base) {
 			if (hotspotTemplates.hasOwnProperty('SkinHotspotClass_ht_video_url__3d')) {
 				for(var i = 0; i < hotspotTemplates['SkinHotspotClass_ht_video_url__3d'].length; i++) {
 					hotspotTemplates['SkinHotspotClass_ht_video_url__3d'][i].ggEvent_changenode();
+				}
+			}
+			if (hotspotTemplates.hasOwnProperty('SkinHotspotClass_ht_image_1__3d')) {
+				for(var i = 0; i < hotspotTemplates['SkinHotspotClass_ht_image_1__3d'].length; i++) {
+					hotspotTemplates['SkinHotspotClass_ht_image_1__3d'][i].ggEvent_changenode();
 				}
 			}
 			me.skin_nodechangeCallback();
@@ -3087,6 +4523,51 @@ function pano2vrVrSkin(player,base) {
 						}
 				});
 			}
+			if (player.get3dModelType() == 2) {
+				me._information.traverse((obj)=>{
+					if (me._information.material) {
+						me._information.material.transparent = (me._information.userData.zIndexCurrent > 0);
+						}
+				});
+			}
+			me._information.logicBlock_visible();
+			if (player.get3dModelType() == 2) {
+				me._information_bg.traverse((obj)=>{
+					if (me._information_bg.material) {
+						me._information_bg.material.transparent = (me._information_bg.userData.zIndexCurrent > 0);
+						}
+				});
+			}
+			if (player.get3dModelType() == 2) {
+				me._info_text_body.traverse((obj)=>{
+					if (me._info_text_body.material) {
+						me._info_text_body.material.transparent = (me._info_text_body.userData.zIndexCurrent > 0);
+						}
+				});
+			}
+			if (player.get3dModelType() == 2) {
+				me._popup_imagen.traverse((obj)=>{
+					if (me._popup_imagen.material) {
+						me._popup_imagen.material.transparent = (me._popup_imagen.userData.zIndexCurrent > 0);
+						}
+				});
+			}
+			me._popup_imagen.logicBlock_visible();
+			if (player.get3dModelType() == 2) {
+				me._info_title.traverse((obj)=>{
+					if (me._info_title.material) {
+						me._info_title.material.transparent = (me._info_title.userData.zIndexCurrent > 0);
+						}
+				});
+			}
+			me._info_title.logicBlock_text();
+			if (player.get3dModelType() == 2) {
+				me._info_popup_close.traverse((obj)=>{
+					if (me._info_popup_close.material) {
+						me._info_popup_close.material.transparent = (me._info_popup_close.userData.zIndexCurrent > 0);
+						}
+				});
+			}
 		};
 		player.addListener('changenode', me.eventchangenodeCallback);
 		me.eventconfigloadedCallback = function() {
@@ -3121,8 +4602,17 @@ function pano2vrVrSkin(player,base) {
 			me._thumbnails.logicBlock_visible();
 			me._page_up_bg.logicBlock_visible();
 			me._page_down_bg.logicBlock_visible();
+			me._information.logicBlock_visible();
+			me._popup_imagen.logicBlock_visible();
+			me._info_title.logicBlock_text();
 		};
 		player.addListener('configloaded', me.eventconfigloadedCallback);
+		me.eventvarchanged_info_w_picture_1Callback = function() {
+			me._information.logicBlock_visible();
+			me._popup_imagen.logicBlock_visible();
+			me._info_title.logicBlock_text();
+		};
+		player.addListener('varchanged_info_w_picture_1', me.eventvarchanged_info_w_picture_1Callback);
 		me.eventvarchanged_node_cloner_vr_hasDownCallback = function() {
 			me._page_down_bg.logicBlock_visible();
 		};
@@ -3168,6 +4658,633 @@ function pano2vrVrSkin(player,base) {
 	};
 	this.removeSkin=function() {
 	};
+	function SkinHotspotClass_ht_image_1__3d(parentScope,hotspot) {
+		var me=this;
+		var flag=false;
+		var hs='';
+		me.parentScope=parentScope;
+		me.hotspot=hotspot;
+		var nodeId=String(hotspot.url);
+		nodeId=(nodeId.charAt(0)=='{')?nodeId.substr(1, nodeId.length - 2):''; // }
+		me.ggUserdata=skin.player.getNodeUserdata(nodeId);
+		me.ggUserdata.nodeId=nodeId;
+		me.ggNodeId=nodeId;
+		me.elementMouseDown={};
+		me.elementMouseOver={};
+		me.findElements=function(id,regex) {
+			return skin.findElements(id,regex);
+		}
+		el = new THREE.Group();
+		el.userData.setOpacityInternal = function(v) {
+			me._ht_image_1.visible = (v>0 && me._ht_image_1.userData.visible);
+		}
+		el.userData.width = 0;
+		el.userData.height = 0;
+		el.name = 'ht_image_1';
+		el.userData.x = -2.13;
+		el.userData.y = 0.28;
+		el.translateZ(0.000);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.000;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'clicky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 0;
+		el.userData.renderOrder = 0;
+		el.userData.isVisible = function() {
+			let vis = me._ht_image_1.visible
+			let parentEl = me._ht_image_1.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._ht_image_1.userData.opacity = v;
+			v = v * me._ht_image_1.userData.parentOpacity;
+			if (me._ht_image_1.userData.setOpacityInternal) me._ht_image_1.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._ht_image_1.children.length; i++) {
+				let child = me._ht_image_1.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._ht_image_1.userData.parentOpacity = v;
+			v = v * me._ht_image_1.userData.opacity
+			if (me._ht_image_1.userData.setOpacityInternal) me._ht_image_1.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._ht_image_1.children.length; i++) {
+				let child = me._ht_image_1.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = true;
+		el.userData.permeable = false;
+		el.userData.visible = true;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._ht_image_1 = el;
+		el.userData.ggId="ht_image_1";
+		me._ht_image_1.userData.ggIsActive=function() {
+			return player.getCurrentNode()==this.ggElementNodeId();
+		}
+		el.userData.ggElementNodeId=function() {
+			if (me.hotspot.url!='' && me.hotspot.url.charAt(0)=='{') { // }
+				return me.hotspot.url.substr(1, me.hotspot.url.length - 2);
+			} else {
+				if ((this.parentNode) && (this.parentNode.userData.ggElementNodeId)) {
+					return this.parentNode.userData.ggElementNodeId();
+				} else {
+					return player.getCurrentNode();
+				}
+			}
+		}
+		me._ht_image_1.userData.onclick=function (e) {
+			skin._popup_imagen.userData.ggSetUrl(player.getBasePath()+""+player._(me.hotspot.url));
+				skin._info_text_body.userData.ggUpdateText=function(force) {
+					var params = [];
+					params.push(player._(String(player._(me.hotspot.description))));
+					var hs = player._("%1", params);
+					if (hs!=this.ggText || force) {
+						this.ggText=hs;
+						this.ggRenderText();
+					}
+				}
+			skin._info_text_body.userData.ggUpdateText();
+				skin._info_title.userData.ggUpdateText=function(force) {
+					var params = [];
+					params.push(player._(String(player._(me.hotspot.title))));
+					var hs = player._("%1", params);
+					if (hs!=this.ggText || force) {
+						this.ggText=hs;
+						this.ggRenderText();
+					}
+				}
+			skin._info_title.userData.ggUpdateText();
+			player.setVariableValue('info_w_picture_1', Number(player._(me.hotspot.target)));
+			player.triggerEvent('hsproxyclick', {'id': me.hotspot.id, 'url': me.hotspot.url});
+		}
+		me._ht_image_1.userData.hasOwnClickAction = true;
+		me._ht_image_1.userData.ondblclick=function (e) {
+			player.triggerEvent('hsproxydblclick', {'id': me.hotspot.id, 'url': me.hotspot.url});
+		}
+		me._ht_image_1.userData.onmouseenter=function (e) {
+			player.setOverrideCursor('pointer');
+			player.setActiveHotspot(me.hotspot);
+			me.elementMouseOver['ht_image_1']=true;
+			me._tt_information.logicBlock_visible();
+			player.triggerEvent('hsproxyover', {'id': me.hotspot.id, 'url': me.hotspot.url});
+		}
+		me._ht_image_1.userData.onmouseleave=function (e) {
+			player.setOverrideCursor('default');
+			me.elementMouseOver['ht_image_1']=false;
+			me._tt_information.logicBlock_visible();
+			player.triggerEvent('hsproxyout', {'id': me.hotspot.id, 'url': me.hotspot.url});
+			player.setActiveHotspot(null);
+		}
+		me._ht_image_1.userData.ggUpdatePosition=function (useTransition) {
+		}
+		el = new THREE.Mesh();
+		el.translateX(0);
+		el.translateY(0.01);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 32;
+		el.userData.height = 32;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'ht_info_image_1';
+		el.userData.x = 0;
+		el.userData.y = 0.01;
+		el.translateZ(0.010);
+		el.userData.zIndex = -10000;
+		el.userData.zIndexCurrent = -10000;
+		el.userData.z = 0.010;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'clicky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 1;
+		el.userData.renderOrder = 1;
+		el.userData.isVisible = function() {
+			let vis = me._ht_info_image_1.visible
+			let parentEl = me._ht_info_image_1.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._ht_info_image_1.userData.opacity = v;
+			v = v * me._ht_info_image_1.userData.parentOpacity;
+			if (me._ht_info_image_1.userData.setOpacityInternal) me._ht_info_image_1.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._ht_info_image_1.children.length; i++) {
+				let child = me._ht_info_image_1.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._ht_info_image_1.userData.parentOpacity = v;
+			v = v * me._ht_info_image_1.userData.opacity
+			if (me._ht_info_image_1.userData.setOpacityInternal) me._ht_info_image_1.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._ht_info_image_1.children.length; i++) {
+				let child = me._ht_info_image_1.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = true;
+		el.userData.permeable = false;
+		el.userData.visible = true;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._ht_info_image_1 = el;
+		el.userData.setOpacityInternal = function(v) {
+			if (me._ht_info_image_1.userData.materialNormal) me._ht_info_image_1.userData.materialNormal.opacity = v;
+			if (me._ht_info_image_1.userData.materialOver) me._ht_info_image_1.userData.materialOver.opacity = v;
+			if (me._ht_info_image_1.userData.materialActive) me._ht_info_image_1.userData.materialActive.opacity = v;
+			me._ht_info_image_1.visible = (v>0 && me._ht_info_image_1.userData.visible);
+		}
+		loader = new THREE.TextureLoader();
+		texture = loader.load('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEAElEQVR4nO2bT08TQRjGf1SBWLMqRg8mYjkB8awhwXJRuOhn4ABeOXEUvWA9+Cdo4oWAJxM/gpzUeMDEqIlBoagHGiRy0Bj/IHXbIuthlgTb2U7bnZkt2F8yl93pzvO8nZmd2X0XGjRo8D/TZLGtNqAb6ATagYPAAf/cT+AHsAJ8AN4B3yxqM8IeYAC4A7wBNgGvwrLp/+aOf42YZe2haAduAJ+o3LCqfPKv2W7RR9UkgHtAHn3Gi0sOmPbbqhtagctAFnPGi8s6MAa0WPBXlg5gDnvGi8scEfaGPuCzQqCN8hlIGvZawjBiPEZtfvvcMGzU8TZSFgzVWlIGfQNwsQ5MqkpVPaGalWAf8IiQM6/jOOsTExOvkslkc3NzcwygUChszs7OFkZHR0+tra'+
+	'3tD3N9xG34HDAb8jr/0IGGCc9xnF+u6y55Abiuu+Q4zq+w7fhaE7rMt6DpVjc9Pf00yPwWU1NTT3W05WvWsk4Y0yTIS6fTz1QBSKfTz3S1B1xSmVNtMhJ+ALSwNebD1qmCMRRDQdXYFWCfLjXLy8t5VZ1MJpPT1R4QRyzTa6IdzRub3t7e957nFcqMgHxPT897nW0iFkk17SJvaBbiAd7Q0NBL13UzkjtAZnBw8IWJNn0vUoLWAXsQT2eOVR6v6ojH49nW1tYNgFwutzebzcZNtQWsInrBZqU/GMDMPxFlGZAZDZoEL1QWpx3FednBoACcNSgkKqSeZHNAG/A14NxOxgMOA9+3H5T1gG52n3kQnrqLD+6VVOw0paC/v/91KpVaIzjA3vj4+JGZmZmThiR0As9VlS5jaCaen59/otoLLC4umloLeEiW9bIhcFAVoVqJ'+
+	'xWLKodXU1GRy+JV4kwXggOTYbqHE24565WQCWQB+WldhjxJvsgD8sCAkKkq8yQKwYkFIVJR4kwXggwUhUVHiTRaAd4h75m7DQ3j7B1kAvgHzxuXY5y1F+wAIvg0+MaslEqSeggLw0KCQqJiRHSzXA1bNabHOKvBYdiIoAH+AB8bk2OcBAc8Dyy2F7wIFI3Lskkd4kVIuACvAfe1y7HOfMos71WboKvBbqxy7ZBEeAlEFYBm4pk2Ofa4BH8tVqGQ7fBORtRmafD6vXGFubGxU/PJCwRvglqpSpU9fOoAXwNEQgujq6loaGRlZCXrq43meNzk5mVhYWOgI0w7wBTiN6MHa6KO+MsOCSg6DaXPDdWBQVYyny9VzmlzZGV8n9ZgoOWTUsYQk9ZMqe8aw10AS/MfJ0lu0IN64rGPP+DoiAyzydPntJBAfM5icG3LAFHDCkq'+
+	'eaMPXJzHXguEUfoYkh0lJuI8ZqtR9Nzfm/7cfgGyybeQCHqO6zuZIHmA0aNGigm7/sybtWWi4E2AAAAABJRU5ErkJggg==');
+		texture.colorSpace = player.getVRTextureColorSpace();
+		material = new THREE.MeshBasicMaterial( {map: texture, side: THREE.DoubleSide, transparent: true} );
+		material.name = 'ht_info_image_1_material';
+		el.userData.materialNormal = material;
+		el.userData.materialCurrent = material;
+		textureOver = loader.load('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEZ0lEQVR4nO2bTW8bRRzGf7u0LrS1QGmTEEs5JIoap5dIEYUTSOTKS74EXwEEBazkAgogKpETgkvgG0BFBRIqLweIocqFpHkBgQwhSt1DqF8bx7scZtdxV17vrjOzs0n6k/4Hr9ee53l27Z2dnYETjhFTO48Bl4EscAkYBNJOAZSc2gE2gDVgFajFpE8JTwFzwA/AfcCOWPedz84533Uk6AfeQBy9qIaDatX57v7Y3EQgA1wDKsg37q2K01YmFmcBnAHeBqqoN+6tKvCWo0ELzyL+sOI27q0NR0tsmIijvi/RxGFrH3E2mAp9A3AeuKHRaFDdAM6pMn8RWEqAyaBaAi7INn8BWEmAubC1IjOEs8DPCTAVtX5ytHclqCtsAF8ALwZ9UVjGxsa2ZmdnNy'+
+	'cnJ08bhmEANJtNe3l5uZHL5bKFQuFJWW0B14GXEYH0xFUkHpWZmZlly7LKtg+WZe1OT0//JrNNRO+xJ55D4qXOMAyr0Wj842fepVarbUoOYN/xEokzgFQhExMTfwWZd8lkMjuSQ9jEp8fo13F4DRiLmlo3MplMOey+Q0ND92S2jfDyaqc3OgWQ4RC/Gz+q1eojEfY9Lbt9xP9ZqBuoa8g9/WzATqVSddu2q0Gnv2VZ90zTbKrQAHwYZL4fhbe0i4uL3wYFsLCw8J2q9h1vF7sF8LrCxm3Anp+f/75cLq/btl2xbbvuVKVUKq3lcrkfVbfvePTldgwCdNeqn/krCRAXV11xTbdfBV7yS+YY0uratwfwvAYhumh5dW+GzgK7gIrrbxLZA54Aau4ZcJmTYx4ghfDMKWfDeBytmqZppVKpRrd9Go3GqWazGbrXeAjGgVtu'+
+	'AJdUt9bX17dbLBYt0zT7uu1n2/Z/w8PD9a2trUHFksbh4E9QdWOMjIzcDTIPYBjG49ls9q5qPcAAHASQ7rLjcSUNDwNQ/yAh6bgBlLSq0EMJHgbQCmBHoxBd3IGDADY0CtHFOhwEsK5RiC4eCGAVcYNwUtjDGRhxA6gCeW1y4mcJZwZaez/gph4tWmh5bQ/gugYhumh5bQ8gz8m4GtwGfnFfeLvCn8erRQuftb/wBvAJUI9PS+xUgU/bN3gD2PHucMz4GHhgrKHT3eB7iHm6x40a8IF3Y6cA/gbmlcuJn3eAf70b/cYD3gX+VConXjaB9zu94RdAHXgFsGQpKBaL5xGPpQLZ3t6WOdmxifDS8WcdNEtsDsjJUjI1NfX76Oho17GHQqFwLp/Pyxylvoo4o3vCBL5B/8PMXutLJKyKSQO3EmAmaoWaKBmWAZIxNT5srQ'+
+	'CBzyB6CeEonAlKJku7pIGvE2DSr75C4XR5FxOYRVxedBt2ax94k5ifc0wDf0g00WvFvmSmnUcRfYV6F4Gqqoo46inlLkMwDHxEPKvHKogJj4lYNudlEHFU1pBv3F042XWiY1RUrh1+GngBMSHpGaKfqnuIlSo3EWN4v0pV5xD34ulxpwbovHj6DuKBxRpi7O5IL54+EvwPgHiiBLWkN8oAAAAASUVORK5CYII=');
+		textureOver.colorSpace = player.getVRTextureColorSpace();
+		el.userData.materialOver = new THREE.MeshBasicMaterial( {map: textureOver, side: THREE.DoubleSide, transparent: true} );
+		el.userData.materialOver.name = 'ht_info_image_1_materialOver';
+		el.userData.createGeometry = function(brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._ht_info_image_1;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			let minDim = Math.min(el.userData.width, el.userData.height) / 2;
+			el.userData.borderRadiusInnerShape.topLeft = Math.min(brTopLeft, minDim);
+			el.userData.borderRadiusInnerShape.topRight = Math.min(brTopRight, minDim);
+			el.userData.borderRadiusInnerShape.bottomRight = Math.min(brBottomRight, minDim);
+			el.userData.borderRadiusInnerShape.bottomLeft = Math.min(brBottomLeft, minDim);
+		geometry = new THREE.PlaneGeometry(me._ht_info_image_1.userData.width / 100.0, me._ht_info_image_1.userData.height / 100.0, 5, 5 );
+		geometry.name = 'ht_info_image_1_geometry';
+		el.geometry = geometry;
+		el.material = el.userData.materialCurrent;
+		}
+		el.userData.createGeometry(0, 0, 0, 0);
+		el.userData.ggId="ht_info_image_1";
+		me._ht_info_image_1.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return me.ggNodeId;
+		}
+		me._ht_info_image_1.userData.onmouseenter=function (e) {
+			player.setOverrideCursor('pointer');
+			me._ht_info_image_1.material = me._ht_info_image_1.userData.materialCurrent = me._ht_info_image_1.userData.materialOver;
+			me.elementMouseOver['ht_info_image_1']=true;
+		}
+		me._ht_info_image_1.userData.onmouseleave=function (e) {
+			player.setOverrideCursor('default');
+			me._ht_info_image_1.material = me._ht_info_image_1.userData.materialCurrent = me._ht_info_image_1.userData.materialNormal;
+			me.elementMouseOver['ht_info_image_1']=false;
+		}
+		me._ht_info_image_1.userData.ggUpdatePosition=function (useTransition) {
+		}
+		me._ht_image_1.add(me._ht_info_image_1);
+		el = new THREE.Mesh();
+			material = new THREE.MeshBasicMaterial( {side : THREE.DoubleSide, transparent : (player.get3dModelType() != 2 || false) } ); 
+			el.userData.transparentIn3d = material.transparent;
+			material.name = 'tt_information_material';
+			el.material = material;
+		el.translateX(0);
+		el.translateY(-0.3);
+		el.scale.set(1.00, 1.00, 1.0);
+		el.userData.width = 100;
+		el.userData.height = 20;
+		el.userData.scale = {x: 1.00, y: 1.00, z: 1.0};
+		el.userData.curScaleOffX = 0;
+		el.userData.curScaleOffY = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.borderRadius.topLeft = el.userData.borderRadiusInnerShape.topLeft = 0;
+		el.userData.borderRadius.topRight = el.userData.borderRadiusInnerShape.topRight = 0;
+		el.userData.borderRadius.bottomRight = el.userData.borderRadiusInnerShape.bottomRight = 0;
+		el.userData.borderRadius.bottomLeft = el.userData.borderRadiusInnerShape.bottomLeft = 0;
+		el.name = 'tt_information';
+		el.userData.x = 0;
+		el.userData.y = -0.3;
+		el.translateZ(2.020);
+		el.userData.zIndex = 100;
+		el.userData.zIndexCurrent = 100;
+		el.userData.z = 0.020;
+		el.rotateZ(0.00);
+		el.userData.angle = 0.00;
+		el.userData.mouseOverTouchMode = 'clicky';
+		el.userData.hanchor = 0;
+		el.userData.vanchor = 0;
+		el.renderOrder = 2;
+		el.userData.renderOrder = 2;
+		el.userData.isVisible = function() {
+			let vis = me._tt_information.visible
+			let parentEl = me._tt_information.parent;
+			while (vis && parentEl) {
+				if (!parentEl.visible) {
+					vis = false;
+					break;
+				}
+				parentEl = parentEl.parent;
+			}
+			return vis;
+		}
+		el.userData.setOpacity = function(v) {
+			me._tt_information.userData.opacity = v;
+			v = v * me._tt_information.userData.parentOpacity;
+			if (me._tt_information.userData.setOpacityInternal) me._tt_information.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._tt_information.children.length; i++) {
+				let child = me._tt_information.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.userData.setParentOpacity = function(v) {
+			me._tt_information.userData.parentOpacity = v;
+			v = v * me._tt_information.userData.opacity
+			if (me._tt_information.userData.setOpacityInternal) me._tt_information.userData.setOpacityInternal(v);
+			for (let i = 0; i < me._tt_information.children.length; i++) {
+				let child = me._tt_information.children[i];
+				if (child.userData.setParentOpacity) {
+					child.userData.setParentOpacity(v);
+				}
+			};
+		}
+		el.visible = false;
+		el.userData.permeable = false;
+		el.userData.visible = false;
+		el.userData.opacity = 1.00;
+		el.userData.parentOpacity = 1.0;
+		el.userData.transitions = [];
+		me._tt_information = el;
+		el.userData.borderWidth = {};
+		el.userData.borderWidth.default = {};
+		el.userData.borderWidth.default.top = 0;
+		el.userData.borderWidth.default.right = 0;
+		el.userData.borderWidth.default.bottom = 0;
+		el.userData.borderWidth.default.left = 0;
+		el.userData.borderRadius = {};
+		el.userData.borderRadius.default = {};
+		el.userData.borderRadius.default.topLeft = 0;
+		el.userData.borderRadius.default.topRight = 0;
+		el.userData.borderRadius.default.bottomRight = 0;
+		el.userData.borderRadius.default.bottomLeft = 0;
+		el.userData.borderRadiusInnerShape = {};
+		el.userData.createGeometry = function(bwTop, bwRight, bwBottom, bwLeft, brTopLeft, brTopRight, brBottomRight, brBottomLeft) {
+			let el = me._tt_information;
+			skin.disposeGeometryAndMaterial(el);
+			skin.removeChildren(el, 'subElement');
+			if (typeof(bwTop) != 'undefined') {
+				el.userData.borderWidth.top = bwTop;
+				el.userData.borderWidth.right = bwRight;
+				el.userData.borderWidth.bottom = bwBottom;
+				el.userData.borderWidth.left = bwLeft;
+				el.userData.borderRadius.topLeft = brTopLeft;
+				el.userData.borderRadius.topRight = brTopRight;
+				el.userData.borderRadius.bottomRight = brBottomRight;
+				el.userData.borderRadius.bottomLeft = brBottomLeft;
+			}
+			let width = el.userData.width / 100.0;
+			let height = el.userData.height / 100.0;
+			skin.rectCalcBorderRadiiInnerShape(me._tt_information);
+			if (skin.rectHasRoundedCorners(me._tt_information)) {
+		roundedRectShape = new THREE.Shape();
+		let borderRadiusTL = me._tt_information.userData.borderRadiusInnerShape.topLeft / 100.0;
+		let borderRadiusTR = me._tt_information.userData.borderRadiusInnerShape.topRight / 100.0;
+		let borderRadiusBR = me._tt_information.userData.borderRadiusInnerShape.bottomRight / 100.0;
+		let borderRadiusBL = me._tt_information.userData.borderRadiusInnerShape.bottomLeft / 100.0;
+		roundedRectShape.moveTo((-width / 2.0) + borderRadiusTL, (height / 2.0));
+		roundedRectShape.lineTo((width / 2.0) - borderRadiusTR, (height / 2.0));
+		if (borderRadiusTR > 0.0) {
+		roundedRectShape.arc(0, -borderRadiusTR, borderRadiusTR, Math.PI / 2.0, 2.0 * Math.PI, true);
+		}
+		roundedRectShape.lineTo((width / 2.0), (-height / 2.0) + borderRadiusBR);
+		if (borderRadiusBR > 0.0) {
+		roundedRectShape.arc(-borderRadiusBR, 0, borderRadiusBR, 2.0 * Math.PI, 3.0 * Math.PI / 2.0, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0) + borderRadiusBL, (-height / 2.0));
+		if (borderRadiusBL > 0.0) {
+		roundedRectShape.arc(0, borderRadiusBL, borderRadiusBL, 3.0 * Math.PI / 2.0, Math.PI, true);
+		}
+		roundedRectShape.lineTo((-width / 2.0), (height / 2.0) - borderRadiusTL);
+		if (borderRadiusTL > 0.0) {
+		roundedRectShape.arc(borderRadiusTL, 0, borderRadiusTL, Math.PI, Math.PI / 2.0, true);
+		}
+		geometry = new THREE.ShapeGeometry(roundedRectShape);
+		geometry.name = 'tt_information_geometry';
+		geometry.computeBoundingBox();
+		var min = geometry.boundingBox.min;
+		var max = geometry.boundingBox.max;
+		var offset = new THREE.Vector2(0 - min.x, 0 - min.y);
+		var range = new THREE.Vector2(max.x - min.x, max.y - min.y);
+		var vertexPositions = geometry.getAttribute('position');
+		var vertexUVs = geometry.getAttribute('uv');
+		for (var i = 0; i < vertexPositions.count; i++) {
+			var v1 = vertexPositions.getX(i);
+			var	v2 = vertexPositions.getY(i);
+			vertexUVs.setX(i, (v1 + offset.x) / range.x);
+			vertexUVs.setY(i, (v2 + offset.y) / range.y);
+		}
+		geometry.uvsNeedUpdate = true;
+			} else {
+				geometry = new THREE.PlaneGeometry(el.userData.width / 100.0, el.userData.height / 100.0, 5, 5);
+				geometry.name = 'tt_information_geometry';
+			}
+			el.geometry = geometry;
+		}
+		me._tt_information.userData.backgroundColorAlpha = 0.666667;
+		me._tt_information.userData.borderColorAlpha = 1;
+		me._tt_information.userData.setOpacityInternal = function(v) {
+			me._tt_information.material.opacity = v;
+			if (me._tt_information.userData.hasScrollbar) {
+				me._tt_information.userData.scrollbar.material.opacity = v;
+				me._tt_information.userData.scrollbarBg.material.opacity = v;
+			}
+			if (me._tt_information.userData.ggSubElement) {
+				me._tt_information.userData.ggSubElement.material.opacity = v
+				me._tt_information.userData.ggSubElement.visible = (v>0 && me._tt_information.userData.visible);
+			}
+			me._tt_information.visible = (v>0 && me._tt_information.userData.visible);
+		}
+		me._tt_information.userData.setBackgroundColor = function(v) {
+			me._tt_information.material.color = v;
+		}
+		me._tt_information.userData.setBackgroundColorAlpha = function(v) {
+			me._tt_information.userData.backgroundColorAlpha = v;
+			me._tt_information.userData.setOpacity(me._tt_information.userData.opacity);
+		}
+		el.userData.createGeometry(0, 0, 0, 0, 0, 0, 0, 0);
+		el.userData.backgroundColor = player.getTHREESkinColor('#000000');
+		el.userData.textColor = '#ffffff';
+		el.userData.textColorAlpha = 1;
+		var canvas = document.createElement('canvas');
+		canvas.width = 200;
+		canvas.height = 40;
+		el.userData.textCanvas = canvas;
+		el.userData.textCanvasContext = canvas.getContext('2d');
+		var tmpCanvas = document.createElement('canvas');
+		el.userData.tmpCanvas = tmpCanvas;
+		el.userData.tmpCanvasContext = tmpCanvas.getContext('2d');
+		el.userData.ggTextureFromCanvas = function() {
+			var el = me._tt_information;
+			var canv = me._tt_information.userData.textCanvas;
+			var ctx = me._tt_information.userData.textCanvasContext;
+			var tmpCanv = me._tt_information.userData.tmpCanvas;
+			ctx.clearRect(0, 0, canv.width, canv.height);
+			ctx.fillStyle = 'rgba(' + me._tt_information.userData.backgroundColor.r * 255 + ', ' + me._tt_information.userData.backgroundColor.g * 255 + ', ' + me._tt_information.userData.backgroundColor.b * 255 + ', ' + me._tt_information.userData.backgroundColorAlpha + ')';
+			ctx.fillRect(0, 0, canv.width, canv.height);
+			if (tmpCanv.width > 0 && tmpCanv.height > 0) {
+				ctx.drawImage(tmpCanv, 0, ( me._tt_information.userData.scrollPosPercent ? tmpCanv.height * me._tt_information.userData.scrollPosPercent : 0), canv.width, canv.height, 0, 0, canv.width, canv.height);
+			}
+		width = me._tt_information.userData.boxWidthCanv / 100.0;
+		height = me._tt_information.userData.boxHeightCanv / 100.0;
+		me._tt_information.userData.width = me._tt_information.userData.boxWidthCanv;
+		me._tt_information.userData.height = me._tt_information.userData.boxHeightCanv;
+		me._tt_information.userData.createGeometry();
+		var newPos = skin.getElementVrPosition(me._tt_information, -50, 20);
+		me._tt_information.position.x = newPos.x;
+		me._tt_information.position.y = newPos.y;
+			var textTexture = new THREE.CanvasTexture(canv);
+			textTexture.name = 'tt_information_texture';
+			textTexture.minFilter = THREE.LinearFilter;
+			textTexture.colorSpace = THREE.LinearSRGBColorSpace;
+			textTexture.wrapS = THREE.ClampToEdgeWrapping;
+			textTexture.wrapT = THREE.ClampToEdgeWrapping;
+			if (me._tt_information.material.map) {
+				me._tt_information.material.map.dispose();
+			}
+			me._tt_information.material.map = textTexture;
+			me._tt_information.material.needsUpdate = true;
+			player.repaint();
+		}
+		el.userData.ggRenderText = function() {
+			skin.removeChildren(me._tt_information, 'scrollbar');
+			skin.paintTextDivToCanvas(me._tt_information, 'box-sizing: border-box; width: auto; height: auto; color: rgba(255,255,255,1); text-align: center; white-space: pre; padding: 0px; overflow: hidden;' + '; color: ' + me._tt_information.userData.textColor + ' !important;', false, true, false);
+			me._tt_information.userData.hasScrollbar = false;
+		}
+		el.userData.ggUpdateText=function(force) {
+			var params = [];
+			params.push(player._(String(player._(me.hotspot.title))));
+			var hs = player._("%1", params);
+			if (hs!=this.ggText || force) {
+				this.ggText=hs;
+				this.ggRenderText();
+			}
+		}
+		el.userData.setBackgroundColor = function(v) {
+			me._tt_information.userData.backgroundColor = v;
+		}
+		el.userData.setBackgroundColorAlpha = function(v) {
+			me._tt_information.userData.backgroundColorAlpha = v;
+		}
+		el.userData.setTextColor = function(v) {
+			me._tt_information.userData.textColor = '#' + v.getHexString();
+		}
+		el.userData.setTextColorAlpha = function(v) {
+			me._tt_information.userData.textColorAlpha = v;
+		}
+		el.userData.ggId="tt_information";
+		me._tt_information.userData.ggIsActive=function() {
+			if ((this.parent) && (this.parent.ggIsActive)) {
+				return this.parent.ggIsActive();
+			}
+			return false;
+		}
+		el.ggElementNodeId=function() {
+			return me.ggNodeId;
+		}
+		me._tt_information.logicBlock_visible = function() {
+			var newLogicStateVisible;
+			if (
+				((me.elementMouseOver['ht_image_1'] == true))
+			)
+			{
+				newLogicStateVisible = 0;
+			}
+			else {
+				newLogicStateVisible = -1;
+			}
+			if (me._tt_information.ggCurrentLogicStateVisible != newLogicStateVisible) {
+				me._tt_information.ggCurrentLogicStateVisible = newLogicStateVisible;
+				if (me._tt_information.ggCurrentLogicStateVisible == 0) {
+			me._tt_information.visible=((!me._tt_information.material && Number(me._tt_information.userData.opacity>0)) || (me._tt_information.material && Number(me._tt_information.material.opacity)>0))?true:false;
+			player.repaint();
+			me._tt_information.userData.visible=true;
+				}
+				else {
+			me._tt_information.visible=false;
+			player.repaint();
+			me._tt_information.userData.visible=false;
+				}
+			}
+		}
+		me._tt_information.userData.ggUpdatePosition=function (useTransition) {
+				me._tt_information.userData.ggUpdateText(true);
+		}
+		me._ht_image_1.add(me._tt_information);
+		me._ht_image_1.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._ht_image_1.traverse((obj)=>{
+				if (me._ht_image_1.material) {
+					me._ht_image_1.material.transparent = (me._ht_image_1.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+		me.elementMouseOver['ht_image_1']=false;
+		me._ht_info_image_1.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._ht_info_image_1.traverse((obj)=>{
+				if (me._ht_info_image_1.material) {
+					me._ht_info_image_1.material.transparent = (me._ht_info_image_1.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+		me.elementMouseOver['ht_info_image_1']=false;
+		me._tt_information.traverse((obj)=>{
+			let level = skin.getDepthFrom(me._tt_information, obj);
+			let treePos = obj.parent ? obj.parent.children.indexOf(obj) : 0;
+			if (100 > 0) {
+				if (obj == me._tt_information) {
+					obj.renderOrder = 10000 + 1000*100
+				} else {
+					let parentOrder = obj.parent.renderOrder;
+					let isSkinElement = obj.userData.hasOwnProperty('ggId');
+					obj.renderOrder = parentOrder + (isSkinElement ? (treePos * 100) : 0) + level;
+				}
+			} else {
+				obj.renderOrder = me._tt_information.userData.renderOrder + level;
+			}
+			if (obj.material) {
+				if (player.get3dModelType() != 2) {
+					obj.material.depthTest = false;
+					obj.material.depthWrite = false;
+				} else {
+					obj.material.transparent = true;
+				}
+			}
+		});
+		player.repaint();
+		me._tt_information.userData.setOpacity(1.00);
+		if (player.get3dModelType() == 2) {
+			me._tt_information.traverse((obj)=>{
+				if (me._tt_information.material) {
+					me._tt_information.material.transparent = (me._tt_information.userData.zIndexCurrent > 0);
+					}
+			});
+		}
+			me._tt_information.userData.ggUpdateText(true);
+		me._tt_information.logicBlock_visible();
+			me.ggEvent_changenode=function() {
+				if (player.get3dModelType() == 2) {
+					me._ht_image_1.traverse((obj)=>{
+						if (me._ht_image_1.material) {
+							me._ht_image_1.material.transparent = (me._ht_image_1.userData.zIndexCurrent > 0);
+							}
+					});
+				}
+				if (player.get3dModelType() == 2) {
+					me._ht_info_image_1.traverse((obj)=>{
+						if (me._ht_info_image_1.material) {
+							me._ht_info_image_1.material.transparent = (me._ht_info_image_1.userData.zIndexCurrent > 0);
+							}
+					});
+				}
+					me._tt_information.userData.ggUpdateText();
+				if (player.get3dModelType() == 2) {
+					me._tt_information.traverse((obj)=>{
+						if (me._tt_information.material) {
+							me._tt_information.material.transparent = (me._tt_information.userData.zIndexCurrent > 0);
+							}
+					});
+				}
+			};
+			me.__obj = me._ht_image_1;
+			me.__obj.userData.hotspot = hotspot;
+			me.__obj.userData.fromSkin = true;
+	};
 	function SkinHotspotClass_ht_video_url__3d(parentScope,hotspot) {
 		var me=this;
 		var flag=false;
@@ -3193,17 +5310,17 @@ function pano2vrVrSkin(player,base) {
 		el.name = 'ht_video_url';
 		el.userData.x = 3.28;
 		el.userData.y = 2.08;
-		el.translateZ(0.000);
+		el.translateZ(0.020);
 		el.userData.zIndex = -10000;
 		el.userData.zIndexCurrent = -10000;
-		el.userData.z = 0.000;
+		el.userData.z = 0.020;
 		el.rotateZ(0.00);
 		el.userData.angle = 0.00;
 		el.userData.mouseOverTouchMode = 'sticky';
 		el.userData.hanchor = 0;
 		el.userData.vanchor = 0;
-		el.renderOrder = 0;
-		el.userData.renderOrder = 0;
+		el.renderOrder = 2;
+		el.userData.renderOrder = 2;
 		el.userData.isVisible = function() {
 			let vis = me._ht_video_url.visible
 			let parentEl = me._ht_video_url.parent;
@@ -15302,13 +17419,21 @@ function pano2vrVrSkin(player,base) {
 			}
 			hotspotTemplates['SkinHotspotClass_ht_video_file__3d'].push(hsinst);
 		} else
-		{
+			if (hotspot.skinid=='ht_video_url') {
 			hotspot.skinid = 'ht_video_url';
 			hsinst = new SkinHotspotClass_ht_video_url__3d(me, hotspot);
 			if (!hotspotTemplates.hasOwnProperty('SkinHotspotClass_ht_video_url__3d')) {
 				hotspotTemplates['SkinHotspotClass_ht_video_url__3d'] = [];
 			}
 			hotspotTemplates['SkinHotspotClass_ht_video_url__3d'].push(hsinst);
+		} else
+		{
+			hotspot.skinid = 'ht_image_1';
+			hsinst = new SkinHotspotClass_ht_image_1__3d(me, hotspot);
+			if (!hotspotTemplates.hasOwnProperty('SkinHotspotClass_ht_image_1__3d')) {
+				hotspotTemplates['SkinHotspotClass_ht_image_1__3d'] = [];
+			}
+			hotspotTemplates['SkinHotspotClass_ht_image_1__3d'].push(hsinst);
 		}
 		return (hsinst ? hsinst.__obj : null);
 	}
