@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 8.0.5/22607
 // Filename: canal 6-7.ggsk
-// Generated 2026-09-17T04:45:39Z
+// Generated 2026-09-17T04:49:43Z
 
 function pano2vrSkin(player,base) {
 	player.addVariable('vis_sounds_splashscreen', 2, false, { ignoreInState: 1  });
